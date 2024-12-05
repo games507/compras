@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Compra</title>
+    <!-- CSS de AdminLTE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    
+<div class="wrapper">
+    
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                                <li class="nav-item"> <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i class="bi bi-list"></i> </a> </li>
+                    <li class="nav-item d-none d-md-block"> <a href="https://alcaldiasanmiguelito.gob.pa/" class="nav-link">Inicio</a> </li>
+                    <li class="user-footer"> <a href="#" class="btn btn-default btn-flat float-end">Sign out</a> </li>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="#" class="brand-link">
+            <i class="fas fa-shopping-cart ml-3"></i>
+            <span class="brand-text font-weight-light">Portal Compras</span>
+        </a>
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item">
+                        <a href="index.php" class="nav-link">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Inicio</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="formulario_compra.html" class="nav-link">
+                            <i class="nav-icon fas fa-edit"></i>
+                            <p>Registrar Compra</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ver_registrosx.php" class="nav-link">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>Lista de Compras</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="registrar_proponente.php" class="nav-link">
+                            <i class="nav-icon fas fa-user-plus"></i>
+                            <p>Registrar Proponente</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="agregar_documento.php" class="nav-link">
+                            <i class="nav-icon fas fa-file-upload"></i>
+                            <p>Agregar Documento</p>
+                        </a>
+                    </li>
+                    <!-- Estado de Compras -->
+                    <li class="nav-item">
+                        <a href="adjudicados.php" class="nav-link">
+                            <i class="nav-icon fas fa-check-circle"></i>
+                            <p>Adjudicados</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="cancelados.php" class="nav-link">
+                            <i class="nav-icon fas fa-times-circle"></i>
+                            <p>Cancelados</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="abiertas.php" class="nav-link">
+                            <i class="nav-icon fas fa-folder-open"></i>
+                            <p>Abiertas</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Content Header -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Registrar Compra</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Formulario de Registro</h3>
+                    </div>
+                    <form method="POST" action="formulario_compra.php">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="no_compra">Número de Compra</label>
+                                <input type="text" class="form-control" id="no_compra" name="no_compra" placeholder="Ingrese el número de compra" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo_procedimiento">Tipo de Procedimiento</label>
+                                <input type="text" class="form-control" id="tipo_procedimiento" name="tipo_procedimiento" placeholder="Ingrese el tipo de procedimiento" value="CONTRATACIÓN QUE SUPERAN LOS DIEZ MIL BALBOAS (B/. 10,000.00) SIN EXCEDER LOS CINCUENTA MIL BALBOAS (B/. 50,000.00)" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="objeto_contractual">Objeto Contractual</label>
+                                <input type="text" class="form-control" id="objeto_contractual" name="objeto_contractual" placeholder="Ingrese el objeto contractual" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                                <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese una descripción" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha_publicacion">Fecha de Publicación</label>
+                                <input type="date" class="form-control" id="fecha_publicacion" name="fecha_publicacion" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo_procedimiento">Fecha de Presentación</label>
+                                <input type="text" class="form-control" id="fecha_presentacion" name="fecha_presentacion"  required>
+                            </div>
+                                        <div class="form-group">
+                                <label for="fecha_apertura">Fecha de Apertura</label>
+                                <input type="date" class="form-control" id="fecha_apertura" name="fecha_apertura" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lugar_presentacion">Lugar de Presentación</label>
+                                <input type="text" class="form-control" id="lugar_presentacion" name="lugar_presentacion" placeholder="Ingrese el lugar de presentación" value="DEPARTAMENTO DE COMPRAS, MUNICIPIO DE SAN MIGUELITO, CALLE PRINCIPAL DE FÁTIMA AMELIA DENIS DE ICAZA." required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="termino_subsanacion">Término de Subsanación</label>
+                                <input type="text" class="form-control" id="termino_subsanacion" name="termino_subsanacion" placeholder="Ingrese el término de subsanación" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="precio_referencia">Precio de Referencia</label>
+                                <input type="number" step="0.01" class="form-control" id="precio_referencia" name="precio_referencia" placeholder="Ingrese el precio de referencia" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="partida_presupuestaria">Partida Presupuestaria</label>
+                                <input type="text" class="form-control" id="partida_presupuestaria" name="partida_presupuestaria" placeholder="Ingrese la partida presupuestaria" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="modalidad_adjudicacion">Modalidad de Adjudicación</label>
+                                <input type="text" class="form-control" id="modalidad_adjudicacion" name="modalidad_adjudicacion" placeholder="Ingrese la modalidad de adjudicación" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="provincia_entrega">Provincia de Entrega</label>
+                                <input type="text" class="form-control" id="provincia_entrega" name="provincia_entrega" placeholder="Ingrese la provincia de entrega" value="Panamá, Distrito San Miguelito" required>
+                            </div>
+                            
+                            
+                            
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <select class="form-control" id="estado" name="estado" required>
+                                    <option value="Activo">Vigente</option>                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Registrar Compra</button>
+                            <a href="index.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS de AdminLTE -->
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+</body>
+</html>
