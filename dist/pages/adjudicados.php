@@ -66,6 +66,8 @@ if ($result === false) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Archivo CSS personalizado -->
+    <link rel="stylesheet" href="..\css\estilos-pc-asm.scss">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -92,43 +94,41 @@ if ($result === false) {
             </div>
         </aside>
 
-        <!-- Content Wrapper -->
         <div class="content-wrapper">
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Bienvenido al Portal de Compras</h1>
-                        </div>
-                    </div>
+            <section>
+                <div style="padding: 30px; text-align: center; color: #002F6C" class="container-fluid text-center">
+                    <h2><b>Compras Adjudicadas</b></h2>
                 </div>
             </section>
 
-            <section class="content">
+            <section class="content cont-pc">
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-body">
                             <!-- Formulario de búsqueda -->
-                            <form method="GET" action="">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="busqueda" placeholder="Buscar por descripción o número de compra" value="<?php echo htmlspecialchars($busqueda); ?>">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i> Buscar</button>
+                            <form method="GET" action="" class="mb-4">
+                                <div class="row g-2">
+                                    <div class="col-md-9 col-sm-8">
+                                        <input type="text" class="form-control" name="busqueda" placeholder="Buscar por descripción o número de compra" value="<?php echo htmlspecialchars($busqueda); ?>">
+                                    </div>
+                                    <div class="col-md-3 col-sm-4">
+                                        <button class="btn btn-search-pc w-100" type="submit"><i class="fas fa-search"></i> Buscar</button>
                                     </div>
                                 </div>
                             </form>
 
                             <!-- Tabla de resultados -->
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>No Compra Menor</th>
-                                        <th>Descripción</th>
-                                        <th>Fecha de Publicación</th>
-                                        <th>Estado</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
+                            <div class="table-box-pc tb-pc-1">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>No Compra Menor</th>
+                                            <th>Descripción</th>
+                                            <th>Fecha de Publicación</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
                                 <tbody>
                                     <?php while ($row = $result->fetch_assoc()): ?>
                                     <tr>
@@ -148,50 +148,34 @@ if ($result === false) {
                                     <?php endwhile; ?>
                                 </tbody>
                             </table>
-
-                            <!-- Paginación -->
-                            <div class="d-flex justify-content-center">
-                                <nav>
-                                    <ul class="pagination">
-                                        <?php if ($pagina_actual > 1): ?>
-                                        <li class="page-item">
-                                            <a class="page-link" href="?pagina=<?php echo $pagina_actual - 1; ?>&busqueda=<?php echo urlencode($busqueda); ?>" aria-label="Anterior">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <?php else: ?>
-                                        <li class="page-item disabled">
-                                            <span class="page-link" aria-hidden="true">&laquo;</span>
-                                        </li>
-                                        <?php endif; ?>
-
-                                        <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
-                                        <li class="page-item <?php echo $i == $pagina_actual ? 'active' : ''; ?>">
-                                            <a class="page-link" href="?pagina=<?php echo $i; ?>&busqueda=<?php echo urlencode($busqueda); ?>">
-                                                <?php echo $i; ?>
-                                            </a>
-                                        </li>
-                                        <?php endfor; ?>
-
-                                        <?php if ($pagina_actual < $total_paginas): ?>
-                                        <li class="page-item">
-                                            <a class="page-link" href="?pagina=<?php echo $pagina_actual + 1; ?>&busqueda=<?php echo urlencode($busqueda); ?>" aria-label="Siguiente">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                        <?php else: ?>
-                                        <li class="page-item disabled">
-                                            <span class="page-link" aria-hidden="true">&raquo;</span>
-                                        </li>
-                                        <?php endif; ?>
-                                    </ul>
-                                </nav>
-                            </div>
                         </div>
+                        <!-- Paginación -->
+                        <nav class="mt-4">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item <?php echo $pagina_actual <= 1 ? 'disabled' : ''; ?>">
+                                        <a class="page-link" href="?pagina=<?php echo $pagina_actual - 1; ?>&busqueda=<?php echo urlencode($busqueda); ?>" aria-label="Anterior">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
+                                    <li class="page-item <?php echo $i == $pagina_actual ? 'active' : ''; ?>">
+                                        <a class="page-link" href="?pagina=<?php echo $i; ?>&busqueda=<?php echo urlencode($busqueda); ?>">
+                                            <?php echo $i; ?>
+                                        </a>
+                                    </li>
+                                    <?php endfor; ?>
+                                    <li class="page-item <?php echo $pagina_actual >= $total_paginas ? 'disabled' : ''; ?>">
+                                        <a class="page-link" href="?pagina=<?php echo $pagina_actual + 1; ?>&busqueda=<?php echo urlencode($busqueda); ?>" aria-label="Siguiente">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+    </div>
 
         <footer class="main-footer">
             <strong>&copy; 2024 Portal Compras.</strong>

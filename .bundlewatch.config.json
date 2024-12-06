@@ -23,6 +23,14 @@
     {
       "path": "./dist/js/adminlte.min.js",
       "maxSize": "3 kB"
+    },
+    {
+      "path": "./dist/css/estilos.css",
+      "maxSize": "5 kB"
+    },
+    {
+      "path": "./dist/css/estilos-pc-asm.scss",
+      "maxSize": "5 kB"
     }
   ]
 }

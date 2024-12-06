@@ -45,6 +45,7 @@ $total_paginas = ceil($total_registros / $registros_por_pagina);
 // Consultar los datos para la página actual
 $sql = "SELECT no_compra, descripcion, fecha_publicacion, estado 
         FROM wp_portalcompra 
+        ORDER BY no_compra DESC
         $where
         LIMIT $offset, $registros_por_pagina";
 $result = $conn->query($sql);
@@ -106,28 +107,6 @@ if ($result === false) {
         
         color: white !important; /* Texto blanco */
     }
-    .pagination .page-link {
-        background-color: #002d69; /* Fondo del botón */
-        color: white; /* Color del texto */
-        border: 1px solid #002d69; /* Color del borde */
-    }
-
-    .pagination .page-link:hover {
-        background-color: #001f4d; /* Fondo en hover */
-        color: white; /* Color del texto en hover */
-    }
-
-    .pagination .page-item.active .page-link {
-        background-color: #004080; /* Fondo para el botón activo */
-        color: white; /* Color del texto en el botón activo */
-        border-color: #004080; /* Color del borde para el botón activo */
-    }
-
-    .pagination .page-item.disabled .page-link {
-        background-color: #d6d6d6; /* Fondo para botones deshabilitados */
-        color: #8c8c8c; /* Color del texto deshabilitado */
-        border-color: #d6d6d6; /* Color del borde deshabilitado */
-    }
   </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,6 +120,7 @@ if ($result === false) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Archivo CSS personalizado -->
     <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="..\css\estilos-pc-asm.scss">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -182,13 +162,13 @@ if ($result === false) {
 
         <!-- Content Wrapper -->
         <div class="content-wrapper">
-            <section class="content-header">
-                <div class="container-fluid text-center">
-                    <h1 class="font-style-title">Bienvenido al Portal de Compras</h1>
+            <section>
+                <div style="padding: 30px; text-align: center; color: #002F6C" class="container-fluid text-center">
+                    <h2><b>Listado de Compras</b></h2>
                 </div>
             </section>
 
-            <section class="content">
+            <section class="content cont-pc">
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-body">
@@ -199,14 +179,14 @@ if ($result === false) {
                                         <input type="text" class="form-control" name="busqueda" placeholder="Buscar por descripción o número de compra" value="<?php echo htmlspecialchars($busqueda); ?>">
                                     </div>
                                     <div class="col-md-3 col-sm-4">
-                                        <button class="btn btn-primary w-100" type="submit"><i class="fas fa-search"></i> Buscar</button>
+                                        <button class="btn btn-search-pc w-100" type="submit"><i class="fas fa-search"></i> Buscar</button>
                                     </div>
                                 </div>
                             </form>
 
                             <!-- Tabla de resultados -->
-                            <div class="table-responsive">
-                                <table class="table table-striped">
+                            <div class="table-box-pc tb-pc-1">
+                                <table>
                                     <thead>
                                         <tr>
                                             <th>No Compra Menor</th>
@@ -229,7 +209,7 @@ if ($result === false) {
                                             <td><?php echo htmlspecialchars($row['fecha_publicacion']); ?></td>
                                             <td><?php echo htmlspecialchars($row['estado']); ?></td>
                                             <td>
-                                                <a class="btn btn-info btn-sm" href="resultados.php?id=<?php echo urlencode($row['no_compra']); ?>"><i class="fas fa-eye"></i></a>
+                                                <a href="resultados.php?id=<?php echo urlencode($row['no_compra']); ?>"><i class="fas fa-eye"></i></a>
                                             </td>
                                         </tr>
                                         <?php endwhile; ?>

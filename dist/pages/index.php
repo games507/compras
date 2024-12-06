@@ -6,7 +6,8 @@
 // Este archivo fue creado como parte del proyecto [Nombre del Proyecto]
 // Supervisado por Dir. Joseph Arosemena
 session_start(); // Inicia la sesión para poder acceder a $_SESSION
-
+//Definimos la sesión como FALSE para validar elementos propios de la sesión activa
+$logueado = false;
 // Verifica si el usuario está logueado
 $logueado = isset($_SESSION['usuario']);
 ?>
@@ -17,18 +18,19 @@ $logueado = isset($_SESSION['usuario']);
 <head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Compras</title>
+    <!--Datos de la pestaña del navegador-->
+    <title>Portal de Compras | Alcaldía de San Miguelito</title>
+    <link rel="shortcut icon" href="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/cropped-Escudo-AlcaldiaSanMiguelito-RGB_Vertical-Blanco.png" />
     <!-- CSS de AdminLTE -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Portal Compra</title><!--begin::Primary Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="AdminLTE v4 | Dashboard">
-    <meta name="author" content="ColorlibHQ">
-    <meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS.">
-    <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags--><!--begin::Fonts-->
+    <meta name="title" content="Portal de Compras | Alcaldía de San Miguelito">
+    <meta name="author" content="Alcaldía de San Miguelito">
+    <meta name="description" content="Portal de Compras de la Alcaldía de San Miguelito. Creado con el objetivo de ser transparente con nuestros vecinos y brindar información inmediata a nuestros proveedores.">
+    <meta name="keywords" content="portal de compras, alcaldia de san miguelito, municipio de san miguelito"><!--end::Primary Meta Tags--><!--begin::Fonts-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css" integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q=" crossorigin="anonymous"><!--end::Fonts--><!--begin::Third Party Plugin(OverlayScrollbars)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/styles/overlayscrollbars.min.css" integrity="sha256-dSokZseQNT08wYEWiz5iLI8QPlKxG+TswNRD8k35cpg=" crossorigin="anonymous"><!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Third Party Plugin(Bootstrap Icons)-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css" integrity="sha256-Qsx5lrStHZyR9REqhUF8iQt73X06c8LGIUPzpOhwRrI=" crossorigin="anonymous"><!--end::Third Party Plugin(Bootstrap Icons)--><!--begin::Required Plugin(AdminLTE)-->
@@ -41,12 +43,13 @@ $logueado = isset($_SESSION['usuario']);
 <style>
     /* Cambiar el fondo de la barra lateral a #002d69 */
     .main-sidebar {
-        background-color: #002d69 !important;
+        background-color: #002F6C !important;
     }
 
     /* Cambiar las letras de los enlaces de la barra lateral a blanco */
     .main-sidebar .nav-link {
         color: white !important;
+        border-radius: 10px;
     }
 
     /* Cambiar el color de los íconos a blanco */
@@ -56,36 +59,37 @@ $logueado = isset($_SESSION['usuario']);
 
     /* Cambiar el color de los íconos cuando se pasa el mouse */
     .main-sidebar .nav-link:hover .nav-icon {
-        color: #f8f9fa !important;  /* Puedes cambiar el color de los íconos en hover si lo deseas */
+        color: #00A9E0 !important;  /* Puedes cambiar el color de los íconos en hover si lo deseas */
     }
 
     /* Cambiar el color de los enlaces cuando se pasa el mouse */
     .main-sidebar .nav-link:hover {
         background-color: #001f4d !important; /* Puedes cambiar el fondo en hover si lo deseas */
-        color: #f8f9fa !important;  /* Cambiar el color del texto al pasar el mouse */
+        color: #00A9E0 !important;  /* Cambiar el color del texto al pasar el mouse */
+        border-radius: 10px;
     }
   .text-bg-primary {
-    background-color: #002D69 !important;
+    background-color: #002F6C !important;
   }
   .text-bg-success{
-    background-color: #002D69 !important;
+    background-color: #002F6C !important;
   }
   .text-bg-warning{
-    background-color: #002D69 !important;
+    background-color: #002F6C !important;
   }
   .text-bg-danger{
-    background-color: #002D69 !important;
+    background-color: #002F6C !important;
   }
   .text-bg-info{
-    background-color: #f2eaed !important;
+    background-color: #002F6C !important;
   }
   .text-bg-secondary{
-    background-color: #bbbf95 !important; 
+    background-color: #002F6C !important; 
   }
  
 /* Caja 'danger' con fondo #002d69 */
 .small-box.text-bg-danger {
-        background-color: #002d69 !important; /* Fondo azul oscuro */
+        background-color: #002F6C !important; /* Fondo azul oscuro */
         color: white; /* Texto blanco */
     }
 
@@ -103,28 +107,47 @@ $logueado = isset($_SESSION['usuario']);
         color: white !important; /* Texto blanco */
     }
     .small-box.text-bg-danger {
-    background-color: #002d69 !important;
+    background-color: #002F6C !important;
     color: white;
 }
 .small-box.text-bg-secondary .inner h3,
 .small-box.text-bg-secondary .inner p {
     color: #002d69 !important;
 }
-.small-box.custom-bg {
-    background-color: transparent !important;
-    border: 2px solid white !important;
-    color: white !important;
-}
+
 .small-box.text-bg-secondary {
     background-color: transparent !important;
     border: 2px solid white !important;
     color: white !important;
 }
-.small-box.custom-bg {
+.small-box .custom-bg {
     background-color: transparent !important;
-    border: 2px solid white !important;
+    border: 1px solid white !important;
+    color: white !important;
+    margin-bottom: 0px !important;
+}
+
+.small-box path {
     color: white !important;
 }
+
+.small-box:hover path {
+    color: #00A9E0 !important;
+}
+
+.small-box-footer:hover{
+    background-color: #00A9E0 !important;
+    border-bottom-right-radius:  0.375rem;
+    border-bottom-left-radius:  0.375rem;
+}
+
+.last-box{
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+}
+
+
+
 
 </style>
 
@@ -133,25 +156,26 @@ $logueado = isset($_SESSION['usuario']);
             <div class="container-fluid"> <!--begin::Start Navbar Links-->
                 <ul class="navbar-nav">
                     <li class="nav-item"> <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button"> <i class="bi bi-list"></i> </a> </li>
-                    <li class="nav-item d-none d-md-block"> <a href="https://alcaldiasanmiguelito.gob.pa/" class="nav-link">Inicio</a> </li>
+                    <li class="nav-item d-none d-md-block"> <b><a href="https://alcaldiasanmiguelito.gob.pa/" class="nav-link">Inicio</a></b></li>
                     
                 </ul> <!--end::Start Navbar Links--> <!--begin::End Navbar Links-->
                 <ul class="navbar-nav ms-auto"> <!--begin::Navbar Search-->
                     
                     <li class="nav-item dropdown"> 
                     <a class="nav-link" data-bs-toggle="dropdown" href="#"> 
-                   
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end"> <a href="#" class="dropdown-item"> 
-                            
-                            <li class="user-footer"> <a href="cerrar.php" class="btn btn-default btn-flat float-end">Salir</a> </li> <!--end::Menu Footer-->
-                            <li class="user-footer"> <a href="login.php" class="btn btn-default btn-flat float-end">Ingresar</a> </li> <!--end::Menu Footer-->
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end"> <a href="#" class="dropdown-item">
+                            <?php if ($logueado): ?>
+                                <li class="user-footer"> <a href="cerrar.php" class="btn btn-default btn-flat float-end"><i style="margin-left:5px; margin-right:5px;" class="bi bi-box-arrow-left"></i>Salir</a> </li> <!--end::Menu Footer-->
+                            <?php elseif ($logueado === false): ?>
+                                <li class="user-footer btn-login-pc"> <a href="login.php" class=""><i style="margin-left:5px; margin-right:5px;" class="bi bi-person-circle"></i>Ingresar</a> </li> <!--end::Menu Footer-->
+                            <?php endif; ?>
                         </ul>
                     </li> <!--end::User Menu Dropdown-->
                 </ul> <!--end::End Navbar Links-->
             </div> <!--end::Container-->
         </nav> <!--end::Header--> <!--begin::Sidebar-->
         <aside style="background-color: #002d69 !important; color: #FFFFFF !important;" class="app-sidebar shadow"> <!--begin::Sidebar Brand-->
-            <div class="sidebar-brand"> <!--begin::Brand Link--> <a href="./index.html" class="brand-link"> <!--begin::Brand Image--> <img src="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/Escudo-AlcaldiaSanMiguelito-RGB_Horizontal-Blanco-1.png" alt="ASM" class="brand-image"> <!--end::Brand Image--> <!--begin::Brand Text--> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
+            <div class="sidebar-brand-pc"> <!--begin::Brand Link--> <a href="./index.php" class="brand-link"> <!--begin::Brand Image--> <img src="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/Escudo-AlcaldiaSanMiguelito-RGB_Horizontal-Blanco-1.png" alt="ASM" class="brand-image"> <!--end::Brand Image--> <!--begin::Brand Text--> <!--end::Brand Text--> </a> <!--end::Brand Link--> </div> <!--end::Sidebar Brand--> <!--begin::Sidebar Wrapper-->
             <div class="sidebar-wrapper">
         
 
@@ -168,10 +192,10 @@ $logueado = isset($_SESSION['usuario']);
     <!-- Sidebar -->
     <aside class="main-sidebar">
         <!-- Brand Logo -->
-        <a href="#" class="brand-link">
-            <i class="fas fa-shopping-cart ml-3"></i>
-            <img src="dist/assets/img/avatar3.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-             </a>
+        <div class="brand-ASM">
+            <div style="border-bottom: solid 1px white;"><img src="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/Escudo-AlcaldiaSanMiguelito-RGB_Horizontal-Blanco.png" alt="Logo" class="brand-image-pc"></div>
+            <div style="padding-top: 10px;"><h5><i style="padding-right: 10px;" class="fas fa-shopping-cart ml-3"></i><b>Portal de Compras</b></h5></div>
+        </div>
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar Menu -->
@@ -254,7 +278,7 @@ $logueado = isset($_SESSION['usuario']);
                 <div class="container-fluid"> <!--begin::Row-->
                     <div class="row">
                         <div class="col-sm-6">
-                            <h3 class="mb-0">Escritorio</h3>
+                            <h3 class="mb-0"><b>Escritorio</b></h3>
                         </div>
         
             <?php
@@ -419,7 +443,7 @@ try {
 
 <!-- Small Box para mostrar tanto "cancelado" como "desierto" -->
 <div class="col-lg-3 col-6"> <!--begin::Small Box Widget 4-->
-    <div class="small-box text-bg-danger"> <!-- Caja con fondo azul oscuro -->
+    <div class="small-box text-bg-danger last-box"> <!-- Caja con fondo azul oscuro -->
         <div class="inner">
             <!-- Fila para los resultados -->
             <div class="row">
@@ -446,16 +470,16 @@ try {
         </div>
     </div> <!-- Fin de la caja danger -->
 </div> <!-- Fin del contenedor -->
-
-        <footer class="app-footer"> <!--begin::To the end-->
-            <div class="float-end d-none d-sm-inline"></div> <!--end::To the end--> <!--begin::Copyright--> <strong>
+    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
+    <footer class="app-footer"> <!--begin::To the end-->
+            <div class="float-end d-none d-sm-inline"></div> <!--end::To the end--> <!--begin::Copyright--> 
+            <strong>
                 Copyright &copy; 2024-2029&nbsp;
-                <a href="https://adminlte.io" class="text-decoration-none">Municipio de San Miguelito</a>.
+                <a style="color: #002F6C" href="#" class="text-decoration-none">Municipio de San Miguelito. </a>All rights reserved.
             </strong>
-            All rights reserved.
+            
             <!--end::Copyright-->
         </footer> <!--end::Footer-->
-    </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->

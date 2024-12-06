@@ -1,0 +1,222 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+body{
+  font-family: "Rubik", serif;
+}
+
+.btn-login-pc a{
+  border-radius: 10px !important;
+  background-color: #009639 !important;
+  color: white !important;
+}
+
+.form-box-pc{ 
+  background-color: white;
+  padding: 20px;
+}
+
+.input-box {
+  position: relative;
+  display: flex;
+}
+
+.input-box input, .input-box select {
+  max-width: 100%;
+  border-style: none;
+  background: transparent;
+  border-bottom: 1px solid #002F6C;
+  border-left: 1px solid #002F6C;
+  border-radius: 10px;
+  width: 100%;
+  position: relative;
+  outline: none;
+  padding: 10px;
+  color: black;
+  font-size: 18px;
+  margin-bottom: 35px;
+}
+
+.input-box label {
+  color: black;
+  font-size: 18px;
+  position: absolute;
+  padding: 10px 0;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  padding: 10px;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label,
+.input-box select:focus ~ label,
+.input-box select:valid ~ label{
+  color: #002F6C;
+  top: -20px;
+  transition: 0.5s;
+}
+
+.input-box input:focus,
+.input-box select:focus{
+  border-bottom: 1.5px solid #00A9E0;
+  border-left: 1.5px solid #00A9E0;
+}
+
+
+.table-box-pc{
+  background-color: #ffffff !important;
+  width: 100%;
+  border-radius: .25rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  } 
+
+.table-box-pc table{
+  width: 100%;
+  border-collapse: collapse;
+  border-color: gray;
+}
+
+.table-box-pc th, td{
+  padding: .75rem;
+}
+
+.table-box-pc tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+.table-box-pc tbody tr:last-child {
+  border-bottom: none;
+}
+.table-box-pc tbody tr:hover {
+  background-color: #00A9E020;
+}
+
+
+
+
+
+
+.tb-pc-1{
+  border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.tb-pc-1 thead{
+  border-bottom: 2px solid rgba(0, 0, 0, .125);
+  border-top: 1.5px solid rgba(0, 0, 0, .125);
+  color: #002F6C;
+  text-align: center !important;
+}
+
+.tb-pc-1 tr td:last-child, tr td:first-child, td:nth-child(3), td:nth-child(4){
+  text-align: center;
+}
+
+.tb-pc-1 a{
+  border-radius: 0.25rem;
+  background-color:#002F6C;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+}
+
+.btn-search-pc{
+  background-color:#002F6C !important;
+  color: white !important;
+  border: none !important;
+}
+
+.btn-search-pc:hover{
+  background-color: #00A9E0 !important;
+}
+
+.tb-pc-1 a i{
+  font-size: 15px;
+}
+
+
+.tb-pc-1 a:hover{
+  background-color: #00A9E0;
+}
+
+.tb-pc-1 .nomb-doc{
+  font-size: 16px;
+}
+
+.tb-pc-1 .date-doc{
+  font-size: 12px;
+}
+
+
+
+
+.tb-pc-2 {
+  overflow: hidden;
+  & thead{
+    border-radius: 10px;
+    background-color: #002F6C;
+    color: white;
+    border-bottom: 1.5px solid #00A9E0;
+    border-top: 1.5px solid #00A9E0;
+  }
+  & tr td:last-child, tr td:first-child {
+    text-align: center;
+    width: 33%;
+  }
+  & tr td:last-child, tr td:first-child {
+    text-align: center;
+  }
+  & button{
+    border-radius: 30px;
+    background-color: #00A9E0;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    & i{
+      font-size: 15px;
+      margin-right: 5px;
+    }
+  }
+  & button:hover{
+    background-color: #002F6C;
+  }
+}
+
+.tb-pc-3{
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-left: 15px solid #002F6C;
+}
+
+.cont-pc{
+    padding: 20px;
+    background-color: white;
+  }
+
+
+.pagination .page-link {
+  background-color: #002F6C; /* Fondo del botón */
+  color: white; /* Color del texto */
+  border: 1px solid #002d69; /* Color del borde */
+}
+
+.pagination .page-link:hover {
+  background-color: #0047BB; /* Fondo en hover */
+  color: white; /* Color del texto en hover */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #00A9E0; /* Fondo para el botón activo */
+  color: white; /* Color del texto en el botón activo */
+  border-color: #00A9E0; /* Color del borde para el botón activo */
+}
+
+.pagination .page-item.disabled .page-link {
+  background-color: #d6d6d6; /* Fondo para botones deshabilitados */
+  color: #8c8c8c; /* Color del texto deshabilitado */
+  border-color: #d6d6d6; /* Color del borde deshabilitado */
+}
