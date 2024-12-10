@@ -15224,6 +15224,7 @@ html.maximized-card {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background-image: url("https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/12/ASM-TYS-Login_Pantalla-inicio-1920x1080-1.jpg") !important;
 }
 
 .login-box,

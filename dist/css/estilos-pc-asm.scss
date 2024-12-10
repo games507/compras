@@ -5,10 +5,45 @@ body{
   font-family: "Rubik", serif;
 }
 
-.btn-login-pc a{
-  border-radius: 10px !important;
-  background-color: #009639 !important;
+.btn-login-pc{
   color: white !important;
+  border-radius: 10px !important;
+  padding: 10px;
+  background-color: #009639;
+  text-decoration: none !important;
+  margin: 10px;
+}
+
+.btn-logout-pc{
+  color: white !important;
+  border-radius: 10px !important;
+  padding: 10px;
+  background-color: #D50032;
+  text-decoration: none !important;
+  margin: 10px;
+}
+
+.login-page-pc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url("https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/12/ASM-TYS-Login_Pantalla-inicio-1920x1080-1.jpg") !important;
+}
+
+.login-page-pc h3{
+  color: #002F6C;
+}
+
+.login-page-pc button{
+  background-color: #002F6C;
+  border: none;
+}
+
+.login-page-pc button:hover{
+  background-color: #00A9E0;
+  border: none;
 }
 
 .form-box-pc{ 

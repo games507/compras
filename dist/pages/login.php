@@ -47,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="..\css\estilos-pc-asm.scss">
     <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <!-- Font Awesome -->
@@ -54,13 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition login-page">
+<body class="login-page-pc">
 <div class="login-box">
-    <div class="login-logo">
-        <a href="#"><b>Hola!</b>Bienvenido</a>
-    </div>
     <div class="card">
         <div class="card-body login-card-body">
+            <h3 class="login-box-msg">¡Hola! <b>Bienvenido</b></h3>
             <p class="login-box-msg">Inicia sesión para continuar</p>
             
             <?php if (isset($error_message)): ?>
@@ -94,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
             
             <p class="mb-1 mt-3">
-                <a href="index.php">Inicio</a>
+                <a href="index.php"><i style="margin-right: 5px;" class="bi bi-arrow-left-circle-fill"></i>Volver al inicio</a>
             </p>
         </div>
     </div>
