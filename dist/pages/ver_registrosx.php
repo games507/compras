@@ -58,7 +58,10 @@ if ($result === false) {
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <!--Datos de la pestaña del navegador-->
+    <title>Lista de Compras | Alcaldía de San Miguelito</title>
+    <link rel="shortcut icon" href="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/cropped-Escudo-AlcaldiaSanMiguelito-RGB_Vertical-Blanco.png" />
   <style>
     /* Cambiar el fondo de la barra lateral a #002d69 */
     .main-sidebar {
@@ -119,19 +122,18 @@ if ($result === false) {
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Archivo CSS personalizado -->
-    <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="..\css\estilos-pc-asm.scss">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
-<?php include 'menu.php';?>
+    <?php include 'menu.php';?>
 
         <!-- Content Wrapper -->
-        <div class="content-wrapper">
+        <div class="">
             <section>
-                <div style="padding: 30px; text-align: center; color: #002F6C" class="container-fluid text-center">
+                <div style="background-color: white; padding: 20px; text-align: center; color: #002F6C" class="container-fluid text-center">
                     <h2><b>Listado de Compras</b></h2>
                 </div>
             </section>
@@ -224,36 +226,5 @@ if ($result === false) {
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE JS -->
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-    <!-- Archivo JS personalizado -->
-    <script src="scripts/miscript.js"></script>
-            <script>
-            $(document).ready(function () {
-                // Activa el colapso de la barra lateral en pantallas pequeñas
-                $(".sidebar-toggle").on("click", function () {
-                    $(".main-sidebar").toggleClass("sidebar-collapse");
-                });
-
-                // Evitar que el menú se cierre automáticamente en móviles
-                if ($(window).width() < 768) {
-                    $(".main-sidebar").addClass("sidebar-collapse"); // Asegura que esté colapsado en móviles
-                }
-            });
-
-            // Para actualizar el estado del menú cuando el tamaño de la ventana cambia
-            $(window).resize(function () {
-                if ($(window).width() < 768) {
-                    $(".main-sidebar").addClass("sidebar-collapse");
-                } else {
-                    $(".main-sidebar").removeClass("sidebar-collapse");
-                }
-            });
-        </script>
-
-</script>
-
 </body>
 </html>

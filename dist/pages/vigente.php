@@ -68,33 +68,11 @@ if ($result === false) {
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="#" class="brand-link">
-                <i class="fas fa-shopping-cart ml-3"></i>
-                <span class="brand-text font-weight-light">Portal Compras</span>
-            </a>
-            <div class="sidebar">
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
-                        <li class="nav-item"><a href="index.php" class="nav-link"><i class="nav-icon fas fa-home"></i><p>Inicio</p></a></li>
-                        <?php if ($logueado): ?>
-                        <li class="nav-item"><a href="formulario_compra.html" class="nav-link"><i class="nav-icon fas fa-edit"></i><p>Registrar Compra</p></a></li>
-                        <li class="nav-item"><a href="registrar_proponente.php" class="nav-link"><i class="nav-icon fas fa-user-plus"></i><p>Registrar Proponente</p></a></li>
-                        <li class="nav-item"><a href="agregar_documento.php" class="nav-link"><i class="nav-icon fas fa-file-upload"></i><p>Agregar Documento</p></a></li>
-                        <?php endif; ?>
-                        <li class="nav-item"><a href="adjudicados.php" class="nav-link"><i class="nav-icon fas fa-check-circle"></i><p>Adjudicados</p></a></li>
-                        <li class="nav-item"><a href="cancelados.php" class="nav-link"><i class="nav-icon fas fa-times-circle"></i><p>Cancelados</p></a></li>
-                        <li class="nav-item"><a href="vigente.php" class="nav-link"><i class="nav-icon fas fa-folder-open"></i><p>vigente</p></a></li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+    <?php include 'menu.php';?>
 
         <!-- Content Wrapper -->
-        <div class="content-wrapper">
+        <div class="">
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
