@@ -60,7 +60,7 @@ if ($result === false) {
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
     <!--Datos de la pestaña del navegador-->
-    <title>Lista de Compras | Alcaldía de San Miguelito</title>
+    <title>Lista de Compras | Portal de Compras</title>
     <link rel="shortcut icon" href="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/cropped-Escudo-AlcaldiaSanMiguelito-RGB_Vertical-Blanco.png" />
   <style>
     /* Cambiar el fondo de la barra lateral a #002d69 */
@@ -113,7 +113,6 @@ if ($result === false) {
   </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Compras</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -133,7 +132,7 @@ if ($result === false) {
         <!-- Content Wrapper -->
         <div class="">
             <section>
-                <div style="background-color: white; padding: 20px; text-align: center; color: #002F6C" class="container-fluid text-center">
+                <div class="title-table-pc container-fluid text-center">
                     <h2><b>Listado de Compras</b></h2>
                 </div>
             </section>

@@ -216,22 +216,6 @@ $logueado = isset($_SESSION['usuario']);
                                         </li>
                                         <?php if ($logueado): ?>
                                         <li class="nav-item">
-                                            <a href="registrar_proponente.php" class="nav-link">
-                                                <i class="nav-icon fas fa-user-plus"></i>
-                                                <p>Registrar Proponente</p>
-                                            </a>
-                                        </li>
-                                        <?php endif; ?>
-                                        <?php if ($logueado): ?>
-                                        <li class="nav-item">
-                                            <a href="agregar_documento.php" class="nav-link">
-                                                <i class="nav-icon fas fa-file-upload"></i>
-                                                <p>Agregar Documento</p>
-                                            </a>
-                                        </li>
-                                        <?php endif; ?>
-                                        <?php if ($logueado): ?>
-                                        <li class="nav-item">
                                             <a href="buscar.php" class="nav-link">
                                                 <i class="nav-icon fas fa-edit"></i>
                                                 <p>Editar</p>
@@ -685,5 +669,23 @@ try {
         sparkline3.render();
     </script> <!--end::Script-->
 </body><!--end::Body-->
+<script>
+    function setActiveButton() {
+            // Obtener el enlace actual
+            const currentPath = window.location.pathname;
+            console.log(currentPath);
 
+            // Remover la clase 'active' de todos los botones
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Agregar la clase 'active' al botón correspondiente
+            if (currentPath.includes('index.php')) {
+                document.getElementById('inicio').classList.add('active');
+            } else if (currentPath.includes('formulario_compra')) {
+                document.getElementById('registrar').classList.add('active');
+            } else if (currentPath.includes('ver_registrox')) {
+                document.getElementById('lista').classList.add('active');
+            }
+        }
+</script>
 </html>

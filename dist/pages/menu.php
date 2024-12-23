@@ -38,7 +38,7 @@
         }
 
         /* Cambiar el color de los enlaces cuando se pasa el mouse */
-        .main-sidebar .nav-link:hover {
+        .active, .main-sidebar .nav-link:hover {
             background-color: #001f4d !important; /* Puedes cambiar el fondo en hover si lo deseas */
             color: #00A9E0 !important;  /* Cambiar el color del texto al pasar el mouse */
             border-radius: 10px;
@@ -123,6 +123,7 @@
     </style>
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="../../dist/js/adminlte.js"></script> <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
     <script>
@@ -146,6 +147,16 @@
                     },
                 });
             }
+        });
+        $(function() {
+            var current = location.pathname;
+            $('.nav-item .nav-link').each(function() {
+                var $this = $(this);
+                if (current.endsWith($this.attr('href'))) {
+                // if the current path is like this link, make it active
+                    $this.addClass('active');
+                }
+            });
         });
     </script> <!--end::OverlayScrollbars Configure--> <!-- OPTIONAL SCRIPTS --> <!-- sortablejs -->
 
@@ -197,14 +208,14 @@
                                 <nav class="mt-2">
                                     <ul class="nav nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                         <li class="nav-item">
-                                            <a href="index.php" class="nav-link">
+                                            <a id="inicio" href="index.php" class="nav-link">
                                                 <i class="nav-icon fas fa-home"></i>
                                                 <p>Inicio</p>
                                             </a>
                                         </li>
                                         <?php if ($logueado): ?>
                                         <li class="nav-item">
-                                            <a href="formulario_compra.html" class="nav-link">
+                                            <a id="registrar" href="formulario_compra.html" class="nav-link">
                                                 <i class="nav-icon fas fa-edit"></i>
                                                 <p>Registrar Compra</p>
                                             </a>
@@ -212,27 +223,11 @@
                                         <?php endif; ?>
                                         
                                         <li class="nav-item">
-                                            <a href="ver_registrosx.php" class="nav-link">
+                                            <a id="lista" href="ver_registrosx.php" class="nav-link">
                                                 <i class="nav-icon fas fa-list"></i>
                                                 <p>Lista de Compras</p>
                                             </a>
                                         </li>
-                                        <?php if ($logueado): ?>
-                                        <li class="nav-item">
-                                            <a href="registrar_proponente.php" class="nav-link">
-                                                <i class="nav-icon fas fa-user-plus"></i>
-                                                <p>Registrar Proponente</p>
-                                            </a>
-                                        </li>
-                                        <?php endif; ?>
-                                        <?php if ($logueado): ?>
-                                        <li class="nav-item">
-                                            <a href="agregar_documento.php" class="nav-link">
-                                                <i class="nav-icon fas fa-file-upload"></i>
-                                                <p>Agregar Documento</p>
-                                            </a>
-                                        </li>
-                                        <?php endif; ?>
                                         <?php if ($logueado): ?>
                                         <li class="nav-item">
                                             <a href="buscar.php" class="nav-link">

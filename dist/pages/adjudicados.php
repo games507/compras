@@ -59,7 +59,8 @@ if ($result === false) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Compras</title>
+    <title>Adjudicados | Portal de Compras</title>
+    <link rel="shortcut icon" href="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/cropped-Escudo-AlcaldiaSanMiguelito-RGB_Vertical-Blanco.png" />
     <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <!-- Font Awesome -->
@@ -74,7 +75,7 @@ if ($result === false) {
 
         <div class="">
             <section>
-                <div style="padding: 30px; text-align: center; color: #002F6C" class="container-fluid text-center">
+                <div class="title-table-pc container-fluid text-center">
                     <h2><b>Compras Adjudicadas</b></h2>
                 </div>
             </section>
