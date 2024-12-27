@@ -352,3 +352,37 @@ body{
   background-color: #00A9E0 !important;
   color: white;
 }
+
+.frm-edit-pc label{
+  margin-top: 20px;
+}
+
+.container {
+  background: #fff;
+  padding: 30px;
+  margin: 20px;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.frm-edit-pc input[type="text"],
+    .frm-edit-pc input[type="date"],
+    .frm-edit-pc input[type="datetime-local"],
+    .frm-edit-pc textarea,
+    .frm-edit-pc select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        font-size: 16px;
+        font-family: "Rubik", serif !important;
+    }
+
+    .frm-edit-pc input:focus,
+    .frm-edit-pc input:hover {
+        border: 1.5px solid #00A9E0 !important;
+    }

@@ -118,7 +118,7 @@ $totalPages = max(ceil($totalRecords / $resultsPerPage), 1);
         </td>
         <td><?php echo htmlspecialchars($record['objeto_contractual']); ?></td>
         <td>
-    <a style="background-color: #009639;" href="editar.php?id=<?php echo $record['id']; ?>" class="btn btn-sm">
+    <a style="background-color: #002F6C;" href="editar.php?id=<?php echo $record['id']; ?>" class="btn btn-sm">
         <i class="fas fa-edit"></i>
     </a>
     <!-- Botón de impresión -->
@@ -126,11 +126,11 @@ $totalPages = max(ceil($totalRecords / $resultsPerPage), 1);
     <i class="bi bi-printer"></i>
     </a>
     <!-- Botón de subir archivo con ícono -->
-    <a href="form/subir_doc.php?id_pcompra=<?php echo $record['id']; ?>" class="btn btn-warning btn-sm">
-    <i class="bi bi-file-earmark-pdf"></i>
+    <a style="background-color: #002F6C;" href="form/subir_doc.php?id_pcompra=<?php echo $record['id']; ?>" class="btn btn-sm">
+    <i class="fas fa-file-upload"></i>
     </a>
     <!-- Botón de agregar proponente -->
-    <a href="proponentes.php?id_pcompra=<?php echo $record['id']; ?>" class="btn btn-primary btn-sm">
+    <a style="background-color: #0047BB;" href="proponentes.php?id_pcompra=<?php echo $record['id']; ?>" class="btn btn-sm">
     <i class="bi bi-building-add"></i>
 </a>
 
@@ -170,8 +170,11 @@ $totalPages = max(ceil($totalRecords / $resultsPerPage), 1);
     </div>
 
     <!-- Footer -->
-    <footer class="main-footer text-center">
-        <strong>&copy; 2024 Portal Compras.</strong> Todos los derechos reservados.
+    <footer style="padding: 16px; color: #002F6C;">
+        <div class="float-right">
+            <b>Version</b> 3.0
+        </div>
+        <strong>© 2024 Portal de Compras.</strong> Todos los derechos reservados.
     </footer>
 </div>
 

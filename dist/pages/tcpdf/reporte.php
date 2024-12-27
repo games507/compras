@@ -23,6 +23,8 @@ if (!$record) {
 // Crear una instancia de TCPDF
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, array(215.9, 330.2)); // Tamaño de hoja legal (8.5" x 13")
 
+$pdf->setTitle('Aviso de Convocatoria');
+
 // Establecer márgenes (1.5 pulgadas a la izquierda, 10 mm arriba, 10 mm a la derecha)
 $pdf->SetMargins(38.1, 10, 10);
 $pdf->AddPage();
@@ -75,6 +77,9 @@ foreach ($record as $column => $value) {
     if ($column === 'id') {
         continue;
     }
+    elseif($column === 'no_compra'){
+        $no_compra = $value;
+    }
 
     // Personalizar los títulos para presentación
     $columnTitle = ucfirst(str_replace("_", " ", $column)); // Reemplazar guiones bajos por espacios y capitalizar
@@ -102,5 +107,5 @@ $pdf->MultiCell(
 
 
 // Salvar el PDF y enviarlo al navegador
-$pdf->Output('reporte_compra_' . $id . '.pdf', 'I'); // Mostrar en el navegador
+$pdf->Output('AvisoDeConvocatoria_' . $no_compra . '.pdf', 'I'); // Mostrar en el navegador
 ?>

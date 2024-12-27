@@ -252,7 +252,7 @@
                                         <li class="nav-item">
                                             <a href="vigente.php" class="nav-link">
                                                 <i class="nav-icon fas fa-folder-open"></i>
-                                                <p>Vigente</p>
+                                                <p>Vigentes</p>
                                             </a>
                                         </li>
                                     </ul>

@@ -75,7 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Registro</title>
+    <link rel="shortcut icon" href="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/cropped-Escudo-AlcaldiaSanMiguelito-RGB_Vertical-Blanco.png" />
     <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="..\css\estilos-pc-asm.scss">
+
     <style>
     * {
         margin: 0;
@@ -83,73 +86,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         box-sizing: border-box;
     }
     body {
-        font-family: Arial, sans-serif;
         background-color: #002d69;
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
         padding: 10px; /* Espaciado para pantallas pequeñas */
-    }
-    .container {
-        background: #fff;
-        padding: 20px;
-        width: 100%;
-        max-width: 500px;
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        text-align: center;
-    }
-    h2 {
-        margin-bottom: 20px;
-        color: #333;
-        font-size: 24px;
     }
     form label {
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
-        color: #555;
+        color: black;
         text-align: left;
     }
-    form input[type="text"],
-    form input[type="date"],
-    form input[type="datetime-local"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 16px;
-    }
-    .button-container {
-        display: flex;
-        flex-wrap: wrap; /* Para que se ajusten en pantallas pequeñas */
-        justify-content: center;
-        gap: 10px;
-        margin-top: 20px;
-    }
-    button, .button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.1s ease;
-        width: calc(50% - 10px); /* Botones más pequeños en móviles */
-    }
-    button {
-        background-color: #002d69
-        ;
-        color: white;
-    }
-    button:hover {
-        background-color: #002d69;
-        transform: scale(1.05);
-    }
+
     .button {
-        background-color: #002d69
-        ;
+        background-color: #002d69;
         color: white;
         text-decoration: none;
     }
@@ -184,20 +136,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <h2>Editar Registro</h2>
-        <form method="POST">
+        <form method="POST" class="frm-edit-pc">
             <input type="hidden" name="id" value="<?php echo $record['id']; ?>">
             
             <label>No Compra Menor:</label>
             <input type="text" name="no_compra" value="<?php echo htmlspecialchars($record['no_compra']); ?>" required>
 
             <label>Tipo de procedimiento:</label>
-            <input type="text" name="tipo_procedimiento" value="<?php echo htmlspecialchars($record['tipo_procedimiento']); ?>" required>
+            <textarea style="width:100%;" name="tipo_procedimiento" required><?php echo htmlspecialchars($record['tipo_procedimiento']); ?></textarea>
 
             <label>Objeto Contractual:</label>
             <input type="text" name="objeto_contractual" value="<?php echo htmlspecialchars($record['objeto_contractual']); ?>" required>
 
             <label>Descripción:</label>
-            <input type="text" name="descripcion" value="<?php echo htmlspecialchars($record['descripcion']); ?>" required>
+            <textarea type="text" name="descripcion" required><?php echo htmlspecialchars($record['descripcion']); ?></textarea>
 
             <label>Fecha de publicación:</label>
             <input type="date" name="fecha_publicacion" value="<?php echo htmlspecialchars($record['fecha_publicacion']); ?>" required>
@@ -227,10 +179,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-                        <button type="submit" style="background-color: #4CAF50; color: white; padding: 5px 5px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease, transform 0.1s ease;">
+                        <button type="submit" style="background-color: #009639; color: white; padding: 5px 5px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease, transform 0.1s ease;">
                 Guardar cambios
             </button>
-            <a href="index.php" class="button" style="background-color: #f44336; color: white; padding: 5px 5px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; text-decoration: none; margin-left: 10px; transition: background-color 0.3s ease, transform 0.1s ease;">
+            <a onClick="javascript:history.go(-1)" class="button" style="white-space: nowrap; background-color: #D50032; color: white; padding: 5px 5px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; text-decoration: none; margin-left: 10px; transition: background-color 0.3s ease, transform 0.1s ease;">
                 Cancelar
             </a>
 
