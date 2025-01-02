@@ -84,7 +84,7 @@ if ($no_compra) {
         </div>
 
         <div class="card cont-portal">
-            <div class="card-header">
+            <div style="text-align: left;" class="card-header">
                 <h5 style="padding-left: 20px;" class="card-title">Descripción</h5>
             </div>
             <div class="card-body">
@@ -181,7 +181,7 @@ $proponente_result = $stmt_proponente->get_result();
 
     <!-- Documentos Relacionados -->
     <div class="cont-portal">
-        <h3>Documentos</h3>
+        <h3 style="text-align: left;">Documentos</h3>
         <div class="table-box-pc tb-pc-1">
             <?php if ($docs_result && $docs_result->num_rows > 0): ?>
                 <table>

@@ -76,7 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Registro</title>
     <link rel="shortcut icon" href="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/cropped-Escudo-AlcaldiaSanMiguelito-RGB_Vertical-Blanco.png" />
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://tabler.io/tabler/assets/css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Archivo CSS personalizado -->
     <link rel="stylesheet" href="..\css\estilos-pc-asm.scss">
 
     <style>
@@ -134,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="margin-right: 30px !important; margin-left: 30px !important;">
         <h2>Editar Registro</h2>
         <form method="POST" class="frm-edit-pc">
             <input type="hidden" name="id" value="<?php echo $record['id']; ?>">
@@ -176,17 +179,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <option value="Cancelado" <?php echo $record['estado'] === 'Cancelado' ? 'selected' : ''; ?>>Cancelado</option>
     <option value="Desierto" <?php echo $record['estado'] === 'Desierto' ? 'selected' : ''; ?>>Desierto</option>
 </select>
-
-
-
-                        <button type="submit" style="background-color: #009639; color: white; padding: 5px 5px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease, transform 0.1s ease;">
-                Guardar cambios
-            </button>
-            <a onClick="javascript:history.go(-1)" class="button" style="white-space: nowrap; background-color: #D50032; color: white; padding: 5px 5px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; text-decoration: none; margin-left: 10px; transition: background-color 0.3s ease, transform 0.1s ease;">
+            <button style="background-color: #009639; color: white; margin-bottom: 20px;" type="submit" class="btn"><i class="bi bi-check-circle-fill"></i>  Guardar cambios</button>
+        </form>
+        <a onClick="javascript:history.go(-1)" style="background-color: #D50032; color: white;" class="btn">
+            <i class="bi bi-x-circle-fill"></i>
                 Cancelar
             </a>
-
-        </form>
         <div id="popupMessage" class="popup-message">
             <?php echo $successMessage; ?>
         </div>
@@ -198,6 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 popup.classList.add('show');
                 setTimeout(() => {
                     popup.classList.remove('show');
+                    history.go(-2);
                 }, 3000); // Ocultar después de 30 segundos
             }
         });
