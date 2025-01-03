@@ -60,7 +60,9 @@ $totalPages = max(ceil($totalRecords / $resultsPerPage), 1);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Búsqueda de Compras</title>
+    <!--Datos de la pestaña del navegador-->
+    <title>Editar Compra | Portal de Compras</title>
+    <link rel="shortcut icon" href="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/cropped-Escudo-AlcaldiaSanMiguelito-RGB_Vertical-Blanco.png" />
     <!-- Estilos -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -76,19 +78,26 @@ $totalPages = max(ceil($totalRecords / $resultsPerPage), 1);
 
     <!-- Contenido principal -->
     <div class="">
-        <div class="content-header">
-            <div class="container-fluid">
-                <h2 class="text-center">Búsqueda de Registros</h2>
+        <section>
+            <div class="title-table-pc container-fluid text-center">
+                <h2><b>Editar Compras</b></h2>
             </div>
-        </div>
-        <div class="content">
-            <div class="container">
-                <form method="POST" class="form-inline justify-content-center mb-3">
-                    <input type="text" name="searchTerm" value="<?php echo htmlspecialchars($searchTerm); ?>" class="form-control mr-2" placeholder="Buscar No Compra Menor">
-                    <button type="submit" class="btn btn-primary">Buscar</button>
+        </section>
+        <section class="content cont-pc">
+            <div class="container-fluid"><div class="card"><div class="card-body">
+                <form method="POST" action="" class="mb-4">
+                    <div class="row g-2">
+                        <div class="col-md-9 col-sm-8">
+                        <input type="text" name="searchTerm" value="<?php echo htmlspecialchars($searchTerm); ?>" class="form-control mr-2" placeholder="Buscar No Compra Menor">
+                        </div>
+                        <div class="col-md-3 col-sm-4">
+                            <button class="btn btn-search-pc w-100" type="submit"><i class="fas fa-search"></i> Buscar</button>
+                        </div>
+                    </div>
                 </form>
                 <?php if ($records): ?>
-                <table class="table table-bordered table-hover">
+                <div class="table-box-pc tb-pc-1">
+                <table>
                     <thead class="thead-light">
                         <tr>
                             <th>No Compra Menor</th>
@@ -132,21 +141,32 @@ $totalPages = max(ceil($totalRecords / $resultsPerPage), 1);
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                    </div>
                 <?php else: ?>
                 <div class="alert alert-warning">No se encontraron registros.</div>
                 <?php endif; ?>
                 <!-- Paginación -->
-                <nav aria-label="Page navigation">
+                <nav class="mt-4">
                     <ul class="pagination justify-content-center">
+                        <li class="page-item <?php echo $page <= 1 ? 'disabled' : ''; ?>">
+                            <a class="page-link" href="?page=<?php echo $page - 1; ?>&searchTerm=<?php echo urlencode($searchTerm); ?>" aria-label="Anterior">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
                         <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                         <li class="page-item <?php echo ($i === $page) ? 'active' : ''; ?>">
                             <a href="?page=<?php echo $i; ?>&searchTerm=<?php echo urlencode($searchTerm); ?>" class="page-link"><?php echo $i; ?></a>
                         </li>
                         <?php endfor; ?>
+                        <li class="page-item <?php echo $page >= $totalPages ? 'disabled' : ''; ?>">
+                            <a class="page-link" href="?page=<?php echo $page + 1; ?>&searchTerm=<?php echo urlencode($searchTerm); ?>" aria-label="Siguiente">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
-            </div>
-        </div>
+            </div></div></div>
+        </section>
     </div>
 
     <!-- Footer -->

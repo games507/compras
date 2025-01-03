@@ -216,22 +216,6 @@ $logueado = isset($_SESSION['usuario']);
                                         </li>
                                         <?php if ($logueado): ?>
                                         <li class="nav-item">
-                                            <a href="registrar_proponente.php" class="nav-link">
-                                                <i class="nav-icon fas fa-user-plus"></i>
-                                                <p>Registrar Proponente</p>
-                                            </a>
-                                        </li>
-                                        <?php endif; ?>
-                                        <?php if ($logueado): ?>
-                                        <li class="nav-item">
-                                            <a href="agregar_documento.php" class="nav-link">
-                                                <i class="nav-icon fas fa-file-upload"></i>
-                                                <p>Agregar Documento</p>
-                                            </a>
-                                        </li>
-                                        <?php endif; ?>
-                                        <?php if ($logueado): ?>
-                                        <li class="nav-item">
                                             <a href="buscar.php" class="nav-link">
                                                 <i class="nav-icon fas fa-edit"></i>
                                                 <p>Editar</p>
@@ -576,6 +560,8 @@ try {
     <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js" integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js" integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY=" crossorigin="anonymous"></script> <!-- jsvectormap -->
     <script>
+        var current = location.pathname;
+        alert(current);
         const visitorsData = {
             US: 398, // USA
             SA: 400, // Saudi Arabia
@@ -685,5 +671,23 @@ try {
         sparkline3.render();
     </script> <!--end::Script-->
 </body><!--end::Body-->
+<script>
+    function setActiveButton() {
+            // Obtener el enlace actual
+            const currentPath = window.location.pathname;
+            console.log(currentPath);
 
+            // Remover la clase 'active' de todos los botones
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Agregar la clase 'active' al botón correspondiente
+            if (currentPath.includes('index.php')) {
+                document.getElementById('inicio').classList.add('active');
+            } else if (currentPath.includes('formulario_compra')) {
+                document.getElementById('registrar').classList.add('active');
+            } else if (currentPath.includes('ver_registrox')) {
+                document.getElementById('lista').classList.add('active');
+            }
+        }
+</script>
 </html>

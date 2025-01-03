@@ -38,7 +38,7 @@
         }
 
         /* Cambiar el color de los enlaces cuando se pasa el mouse */
-        .main-sidebar .nav-link:hover {
+        .active, .main-sidebar .nav-link:hover {
             background-color: #001f4d !important; /* Puedes cambiar el fondo en hover si lo deseas */
             color: #00A9E0 !important;  /* Cambiar el color del texto al pasar el mouse */
             border-radius: 10px;
@@ -147,6 +147,18 @@
                 });
             }
         });
+
+        $(function(){
+            var current = location.pathname;
+            alert(current);
+            $('.navbar-nav .nav-link').each(function(){
+                var $this = $(this);        
+                // if the current path is like this link, make it active
+                if($this.attr('href').indexOf(current) !== -1){
+                    $this.addClass('active');
+                }
+            })
+        });
     </script> <!--end::OverlayScrollbars Configure--> <!-- OPTIONAL SCRIPTS --> <!-- sortablejs -->
 
 
@@ -197,14 +209,14 @@
                                 <nav class="mt-2">
                                     <ul class="nav nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                                         <li class="nav-item">
-                                            <a href="index.php" class="nav-link">
+                                            <a id="inicio" href="index.php" class="nav-link">
                                                 <i class="nav-icon fas fa-home"></i>
                                                 <p>Inicio</p>
                                             </a>
                                         </li>
                                         <?php if ($logueado): ?>
                                         <li class="nav-item">
-                                            <a href="formulario_compra.html" class="nav-link">
+                                            <a id="registrar" href="formulario_compra.html" class="nav-link">
                                                 <i class="nav-icon fas fa-edit"></i>
                                                 <p>Registrar Compra</p>
                                             </a>
@@ -212,27 +224,11 @@
                                         <?php endif; ?>
                                         
                                         <li class="nav-item">
-                                            <a href="ver_registrosx.php" class="nav-link">
+                                            <a id="lista" href="ver_registrosx.php" class="nav-link">
                                                 <i class="nav-icon fas fa-list"></i>
                                                 <p>Lista de Compras</p>
                                             </a>
                                         </li>
-                                        <?php if ($logueado): ?>
-                                        <li class="nav-item">
-                                            <a href="registrar_proponente.php" class="nav-link">
-                                                <i class="nav-icon fas fa-user-plus"></i>
-                                                <p>Registrar Proponente</p>
-                                            </a>
-                                        </li>
-                                        <?php endif; ?>
-                                        <?php if ($logueado): ?>
-                                        <li class="nav-item">
-                                            <a href="agregar_documento.php" class="nav-link">
-                                                <i class="nav-icon fas fa-file-upload"></i>
-                                                <p>Agregar Documento</p>
-                                            </a>
-                                        </li>
-                                        <?php endif; ?>
                                         <?php if ($logueado): ?>
                                         <li class="nav-item">
                                             <a href="buscar.php" class="nav-link">

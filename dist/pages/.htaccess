@@ -1,0 +1,19 @@
+# Habilitar el motor de reescritura
+RewriteEngine On
+
+# Establecer la base del directorio (opcional, solo si necesitas definirla explícitamente)
+RewriteBase /formulario/dist/pages/
+
+# Redirigir la URL /archivo a /carpeta/archivo.php sin mostrar la ruta original
+RewriteRule ^archivo$ /carpeta/archivo.php [L]
+
+# Redirigir todas las peticiones que no sean archivos o directorios existentes a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
+
+# Opcional: Proteger el archivo .htaccess
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
