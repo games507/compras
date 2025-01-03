@@ -238,7 +238,7 @@ $logueado = isset($_SESSION['usuario']);
                                         <li class="nav-item">
                                             <a href="vigente.php" class="nav-link">
                                                 <i class="nav-icon fas fa-folder-open"></i>
-                                                <p>Vigente</p>
+                                                <p>Vigentes</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -335,10 +335,10 @@ WHERE estado = 'vigente'";
                             <div class="small-box text-bg-success">
                                 <div class="inner">
                                 <h3><?php echo $total_estado; ?></h3>
-                                    <p>Vigente</p>
+                                    <p>Vigentes</p>
                                 </div> <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z"></path>
-                                </svg> <a href="#" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
+                                </svg> <a href="./vigente.php" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
                                     Ver Enlace<i class="bi bi-link-45deg"></i> </a>
                             </div> <!--end::Small Box Widget 2-->
                         </div> <!--end::Col-->
@@ -380,8 +380,8 @@ WHERE estado = 'adjudicados'";
                                     <p>Adjudicados</p>
                                 </div> <svg class="small-box-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"></path>
-                                </svg> <a href="#" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
-                                    ver Enlace <i class="bi bi-link-45deg"></i> </a>
+                                </svg> <a href="./adjudicados.php" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">
+                                    Ver Enlace <i class="bi bi-link-45deg"></i> </a>
                             </div> <!--end::Small Box Widget 3-->
                         </div> <!--end::Col-->
         
@@ -426,7 +426,7 @@ try {
                     <div class="small-box custom-bg"> <!-- Caja 'cancelado' con fondo transparente y borde blanco -->
                         <div class="inner">
                             <h3><?php echo $total_cancelado; ?></h3> <!-- Mostrar el total de "Cancelado" -->
-                            <p>Cancelado</p>
+                            <p>Cancelados</p>
                         </div>
                     </div>
                 </div>
@@ -435,7 +435,7 @@ try {
                     <div class="small-box custom-bg"> <!-- Caja 'desierta' con fondo transparente y borde blanco -->
                         <div class="inner">
                             <h3><?php echo $total_desierto; ?></h3> <!-- Mostrar el total de "Desierto" -->
-                            <p><a href="pagina_desierto.php" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">Desierto</a></p>
+                            <p><a href="pagina_desierto.php" class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover">Desiertos</a></p>
                                                             
                         </div>
                     </div>
@@ -445,15 +445,12 @@ try {
     </div> <!-- Fin de la caja danger -->
 </div> <!-- Fin del contenedor -->
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
-    <footer class="app-footer"> <!--begin::To the end-->
-        <div class="float-end d-none d-sm-inline"></div> <!--end::To the end--> <!--begin::Copyright--> 
-        <strong>
-            Copyright &copy; 2024-2029&nbsp;
-            <a style="color: #002F6C" href="#" class="text-decoration-none">Municipio de San Miguelito. </a>All rights reserved.
-        </strong>
-        
-        <!--end::Copyright-->
-    </footer> <!--end::Footer-->
+    <footer style="padding: 16px; color: #002F6C;">
+        <div class="float-right">
+            <b>Version</b> 3.0
+        </div>
+        <strong>© 2024 Portal de Compras.</strong> Todos los derechos reservados.
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script> <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->

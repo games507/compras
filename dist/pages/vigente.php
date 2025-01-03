@@ -156,5 +156,9 @@ if ($result === false) {
             </section>
         </div>
 
-        <footer class="main-footer">
-            <strong>&copy; 2024 Portal Compras.</strong>
+        <footer style="padding: 16px; color: #002F6C;">
+            <div class="float-right">
+                <b>Version</b> 3.0
+            </div>
+            <strong>© 2024 Portal de Compras.</strong> Todos los derechos reservados.
+        </footer>

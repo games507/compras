@@ -46,6 +46,10 @@ body{
   border: none;
 }
 
+.page-header{
+  text-align: left !important;
+}
+
 .form-box-pc{ 
   background-color: white;
   padding: 20px;
@@ -251,16 +255,78 @@ body{
 }
 
 .tb-pc-3{
+  text-align: left !important;
   box-sizing: border-box;
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, .125);
   border-left: 15px solid #002F6C;
 }
 
-.cont-pc{
-    padding-right: 20px !important;
-    padding-left: 20px !important;
-    background-color: white;
+.cont-portal{
+  top: 0px !important;
+  margin-bottom: 40px !important;
+  vertical-align: middle;
+}
+
+.card-header{
+  background-color: #002F6C33 !important;
+  color: #002F6C;
+  vertical-align: middle;
+  padding-top:10px;
+  padding-bottom: 5px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  & h5{
+    font-weight: bold !important;
+  }
+}
+
+.cont-text-cp{
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.table-multiline{
+  vertical-align:top !important;
+  text-align: top;
+  font-weight: bold;
+  color: #002F6C;
+}
+
+.badge-estado{
+  background-color: #00A9E0;
+  color: white;
+}
+
+.nombre-pc a, h2{
+  color: #002F6C !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+}
+
+.nombre-pc a i:hover{
+  color: #00A9E0 !important;
+}
+
+.g-details{
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding-left: 26px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+    border-left: 15px solid #002F6C;
+}
+
+.highlight-cards{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+.highlight-cards p{
+    margin-bottom: 0px !important;
   }
 
 
@@ -286,3 +352,44 @@ body{
   color: #8c8c8c; /* Color del texto deshabilitado */
   border-color: #d6d6d6; /* Color del borde deshabilitado */
 }
+
+.btn-sm:hover{
+  background-color: #00A9E0 !important;
+  color: white;
+}
+
+.frm-edit-pc label{
+  margin-top: 20px;
+}
+
+.container {
+  background: #fff;
+  padding: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+.frm-edit-pc input[type="text"],
+    .frm-edit-pc input[type="date"],
+    .frm-edit-pc input[type="datetime-local"],
+    .frm-edit-pc textarea,
+    .frm-edit-pc select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #000000;
+        border-radius: 5px;
+        font-size: 16px;
+        font-family: "Rubik", serif !important;
+    }
+
+    .frm-edit-pc input:focus,
+    .frm-edit-pc input:hover {
+        border: 1.5px solid #00A9E0 !important;
+    }

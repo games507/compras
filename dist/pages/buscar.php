@@ -21,12 +21,12 @@ $offset = ($page - 1) * $resultsPerPage;
 // Procesar búsqueda
 if (!empty($_POST['searchTerm']) || !empty($_GET['searchTerm'])) {
     $searchTerm = !empty($_POST['searchTerm']) ? $_POST['searchTerm'] : $_GET['searchTerm'];
-    $sql = "SELECT * FROM wp_portalcompra WHERE `no_compra` LIKE ? LIMIT ?, ?";
+    $sql = "SELECT * FROM wp_portalcompra ORDER BY no_compra DESC WHERE `no_compra` LIKE ? LIMIT ?, ?";
     $stmt = $conn->prepare($sql);
     $likeTerm = "%" . $searchTerm . "%";
     $stmt->bind_param("sii", $likeTerm, $offset, $resultsPerPage);
 } else {
-    $sql = "SELECT * FROM wp_portalcompra LIMIT ?, ?";
+    $sql = "SELECT * FROM wp_portalcompra ORDER BY no_compra DESC LIMIT ?, ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $offset, $resultsPerPage);
 }
@@ -38,7 +38,7 @@ $records = $result->fetch_all(MYSQLI_ASSOC);
 // Contar total de registros
 if (!empty($searchTerm)) {
     // Si hay término de búsqueda, contar solo los registros que coinciden
-    $countSql = "SELECT COUNT(*) FROM wp_portalcompra WHERE `no_compra` LIKE ?";
+    $countSql = "SELECT COUNT(*) FROM wp_portalcompra WHERE `no_compra` LIKE ? ORDER BY no_compra DESC";
     $countStmt = $conn->prepare($countSql);
     $countStmt->bind_param("s", $likeTerm);
 } else {
@@ -118,20 +118,20 @@ $totalPages = max(ceil($totalRecords / $resultsPerPage), 1);
         </td>
         <td><?php echo htmlspecialchars($record['objeto_contractual']); ?></td>
         <td>
-    <a href="editar.php?id=<?php echo $record['id']; ?>" class="btn btn-info btn-sm">
+    <a style="background-color: #002F6C;" href="editar.php?id=<?php echo $record['id']; ?>" class="btn btn-sm">
         <i class="fas fa-edit"></i>
     </a>
     <!-- Botón de impresión -->
-    <a href="tcpdf/reporte.php?id=<?php echo $record['id']; ?>" target="_blank" class="btn btn-success btn-sm">
-        <i class="fas fa-print"></i>
+    <a style="background-color: #0047BB;" href="tcpdf/reporte.php?id=<?php echo $record['id']; ?>" target="_blank" class="btn btn-sm">
+    <i class="bi bi-printer"></i>
     </a>
     <!-- Botón de subir archivo con ícono -->
-    <a href="form/subir_doc.php?id_pcompra=<?php echo $record['id']; ?>" class="btn btn-warning btn-sm">
-        <i class="fas fa-upload"></i>
+    <a style="background-color: #002F6C;" href="form/subir_doc.php?id_pcompra=<?php echo $record['id']; ?>" class="btn btn-sm">
+    <i class="fas fa-file-upload"></i>
     </a>
     <!-- Botón de agregar proponente -->
-    <a href="proponentes.php?id_pcompra=<?php echo $record['id']; ?>" class="btn btn-primary btn-sm">
-    <i class="fas fa-user" style="color: white;"></i>
+    <a style="background-color: #0047BB;" href="proponentes.php?id_pcompra=<?php echo $record['id']; ?>" class="btn btn-sm">
+    <i class="bi bi-building-add"></i>
 </a>
 
 
@@ -170,8 +170,11 @@ $totalPages = max(ceil($totalRecords / $resultsPerPage), 1);
     </div>
 
     <!-- Footer -->
-    <footer class="main-footer text-center">
-        <strong>&copy; 2024 Portal Compras.</strong> Todos los derechos reservados.
+    <footer style="padding: 16px; color: #002F6C;">
+        <div class="float-right">
+            <b>Version</b> 3.0
+        </div>
+        <strong>© 2024 Portal de Compras.</strong> Todos los derechos reservados.
     </footer>
 </div>
 

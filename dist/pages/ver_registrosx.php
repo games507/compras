@@ -215,8 +215,8 @@ if ($result === false) {
         </div>
 
         <!-- Footer -->
-        <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
+        <footer style="padding: 16px; color: #002F6C;">
+            <div class="float-right">
                 <b>Version</b> 3.0
             </div>
             <strong>© 2024 Portal de Compras.</strong> Todos los derechos reservados.
