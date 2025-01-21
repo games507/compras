@@ -15392,10 +15392,13 @@ html.maximized-card {
 }
 
 .brand-image-pc{
-  max-width: 100% !important;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  max-width: 200px !important;
   max-height: 57px !important;
-  height: 60px;
-  width: auto;
+  height: 60px !important;
+  width: auto !important;
 }
 
 .brand-ASM {
