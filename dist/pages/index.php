@@ -447,7 +447,7 @@ try {
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <footer style="padding: 16px; color: #002F6C;">
         <div class="float-right">
-            <b>Version</b> 3.0
+            <b>Version</b> 1.0
         </div>
         <strong>© 2024 Portal de Compras.</strong> Todos los derechos reservados.
     </footer>

@@ -376,18 +376,19 @@ body{
 }
 
 .frm-edit-pc input[type="text"],
-    .frm-edit-pc input[type="date"],
-    .frm-edit-pc input[type="datetime-local"],
-    .frm-edit-pc textarea,
-    .frm-edit-pc select {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #000000;
-        border-radius: 5px;
-        font-size: 16px;
-        font-family: "Rubik", serif !important;
-    }
+.frm-edit-pc input[type="date"],
+.frm-edit-pc input[type="datetime-local"],
+.frm-edit-pc input[type="number"],
+.frm-edit-pc textarea,
+.frm-edit-pc select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Rubik", serif !important;
+}
 
     .frm-edit-pc input:focus,
     .frm-edit-pc input:hover {

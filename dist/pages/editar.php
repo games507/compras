@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Registro</title>
+    <title>Editar Registro | <?php echo htmlspecialchars($record['no_compra']); ?></title>
     <link rel="shortcut icon" href="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/cropped-Escudo-AlcaldiaSanMiguelito-RGB_Vertical-Blanco.png" />
     <link rel="stylesheet" href="https://tabler.io/tabler/assets/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
@@ -170,16 +170,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" name="termino_subsanacion" value="<?php echo htmlspecialchars($record['termino_subsanacion']); ?>" required>
 
             <label>Precio de referencia:</label>
-            <input type="text" name="precio_referencia" value="<?php echo htmlspecialchars($record['precio_referencia']); ?>" required>
+            <input type="number" min="10000" max="50000" step="0.01" id="precio_referencia" name="precio_referencia" value="<?php echo htmlspecialchars($record['precio_referencia']); ?>" oninput="limitDecimals(this)" required>
+            <script>
+                function limitDecimals(input) {
+                    var value = parseFloat(input.value);
+                    if (!isNaN(value)) {
+                        input.value = value.toFixed(2);
+                    }
+                }
+            </script>
 
             <label>Estado:</label>
-<select name="estado" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;">
-    <option value="Vigente" <?php echo $record['estado'] === 'Vigente' ? 'selected' : ''; ?>>Vigente</option>
-    <option value="Adjudicado" <?php echo $record['estado'] === 'Adjudicado' ? 'selected' : ''; ?>>Adjudicado</option>
-    <option value="Cancelado" <?php echo $record['estado'] === 'Cancelado' ? 'selected' : ''; ?>>Cancelado</option>
-    <option value="Desierto" <?php echo $record['estado'] === 'Desierto' ? 'selected' : ''; ?>>Desierto</option>
-</select>
+            <select name="estado" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;">
+                <option value="Vigente" <?php echo $record['estado'] === 'Vigente' ? 'selected' : ''; ?>>Vigente</option>
+                <option value="Adjudicado" <?php echo $record['estado'] === 'Adjudicado' ? 'selected' : ''; ?>>Adjudicado</option>
+                <option value="Cancelado" <?php echo $record['estado'] === 'Cancelado' ? 'selected' : ''; ?>>Cancelado</option>
+                <option value="Desierto" <?php echo $record['estado'] === 'Desierto' ? 'selected' : ''; ?>>Desierto</option>
+            </select>
+
             <button style="background-color: #009639; color: white; margin-bottom: 20px;" type="submit" class="btn"><i class="bi bi-check-circle-fill"></i>  Guardar cambios</button>
+        
         </form>
         <a onClick="javascript:history.go(-1)" style="background-color: #D50032; color: white;" class="btn">
             <i class="bi bi-x-circle-fill"></i>

@@ -57,7 +57,7 @@ if ($no_compra) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Compras</title>
+    <title><?php echo htmlspecialchars($row['no_compra'] ?? 'Compra no encontrada'); ?> | Portal de Compras</title>
     <link rel="shortcut icon" href="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/cropped-Escudo-AlcaldiaSanMiguelito-RGB_Vertical-Blanco.png" />
     <link rel="stylesheet" href="https://tabler.io/tabler/assets/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
@@ -66,9 +66,9 @@ if ($no_compra) {
     <link rel="stylesheet" href="..\css\estilos-pc-asm.scss">
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="margin-bottom: 50px !important; padding-top: 30px !important; margin-top: 30px;">
         <!-- Encabezado -->
-        <div style="margin-bottom: 50px; padding-top: 30px !important;" class="page-header">
+        <div class="page-header">
             <h2 class="nombre-pc">
                 <a onClick="javascript:history.go(-1)">
                     <i style="margin-right: 15px; text-decoration:none;" class="fa fa-chevron-left" aria-hidden="true"></i>
@@ -111,8 +111,11 @@ if ($no_compra) {
                     <div class="card-header">
                         <h5>Precio de Referencia</h5>
                     </div>
+                    <?php
+                        $p_referencia = number_format($row['precio_referencia'], 2, '.', ',');
+                    ?>
                     <div class="cont-text-cp">
-                        <h4 class="font-weight-bold"><?php echo htmlspecialchars($row['precio_referencia']); ?></h4>
+                        <h4 class="font-weight-bold">B/. <?php echo htmlspecialchars($p_referencia); ?></h4>
                         <p>Balboas</p>
                     </div>
                 </div>
@@ -126,16 +129,33 @@ if ($no_compra) {
                     </div>
                 </div>
             </div>
+            <?php
+                $f_presentacion = date("d-m-Y", strtotime($row['fecha_presentacion']));
+                $h_presentacion = date("h:i A", strtotime($row['fecha_presentacion']));
+                $obj_hora = new DateTime($h_presentacion);
+                $obj_hora->modify('+1 hour');
+                $h_final = $obj_hora->format('h:i A')
+            ?>
             <div class="col-6 col-sm-6 col-lg-3 text-center cont-portal">
                 <div class="card">
                     <div class="card-header"><h5>Fecha de presentación</h5></div>
-                    <div class="cont-text-cp"><h6 class="font-weight-bold"><?php echo htmlspecialchars($row['fecha_presentacion']); ?></h6></div>
+                    <div class="cont-text-cp">
+                        <h4 class="font-weight-bold"><?php echo htmlspecialchars($f_presentacion); ?></h4>
+                        <p>De <?php echo $h_presentacion; ?> a <?php echo $h_final; ?></p>
+                    </div>
                 </div>
             </div>
+            <?php
+                $f_apertura = date("d-m-Y", strtotime($row['fecha_apertura']));
+                $h_apertura = date("h:i:s A", strtotime($row['fecha_apertura']));
+            ?>
             <div class="col-6 col-sm-6 col-lg-3 text-center cont-portal">
                 <div class="card">
                     <div class="card-header"><h5>Fecha de apertura</h5></div>
-                    <div class="cont-text-cp"><h4 class="font-weight-bold"><?php echo htmlspecialchars($row['fecha_apertura']); ?></h4></div>
+                    <div class="cont-text-cp">
+                        <h4 class="font-weight-bold"><?php echo htmlspecialchars($f_apertura); ?></h4>
+                        <p><?php echo htmlspecialchars($h_apertura); ?></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -194,11 +214,12 @@ $proponente_result = $stmt_proponente->get_result();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($doc = $docs_result->fetch_assoc()): ?>
+                        <?php while ($doc = $docs_result->fetch_assoc()): 
+                            $fecha_mod = date("d-m-Y h:i:s A", strtotime($doc['date']));?>
                             <tr>
                                 <td><i style="color: #00A9E0" class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
                                 <td><?php echo htmlspecialchars($doc['nombre']); ?></td>
-                                <td><?php echo htmlspecialchars($doc['date']); ?></td>
+                                <td><?php echo htmlspecialchars($fecha_mod); ?></td>
                                 <td><a class="btn badge-estado" href="uploads/<?php echo htmlspecialchars($doc['pdf']); ?>" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i>  Ver PDF</a></td>
                             </tr>
                         <?php endwhile; ?>

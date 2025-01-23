@@ -54,82 +54,10 @@
         color: #00A9E0 !important;  /* Cambiar el color del texto al pasar el mouse */
         border-radius: 10px;
     }
-    .text-bg-primary {
-        background-color: #002F6C !important;
-    }
-    .text-bg-success{
-        background-color: #002F6C !important;
-    }
-    .text-bg-warning{
-        background-color: #002F6C !important;
-    }
-    .text-bg-danger{
-        background-color: #002F6C !important;
-    }
-    .text-bg-info{
-        background-color: #002F6C !important;
-    }
-    .text-bg-secondary{
-        background-color: #002F6C !important; 
-    }
-    
-    /* Caja 'danger' con fondo #002d69 */
-    .small-box.text-bg-danger {
-        background-color: #002F6C !important; /* Fondo azul oscuro */
-        color: white; /* Texto blanco */
-    }
 
-    /* Caja 'cancelado' con fondo transparente, borde blanco y letra blanca */
-    .small-box.text-bg-secondary {
-        background-color: transparent !important; /* Fondo transparente */
-        border: 2px solid white !important; /* Borde blanco */
-        color: white !important; /* Texto blanco */
-    }
-
-    /* Caja 'cancelar' y 'desierta' con fondo transparente y borde blanco */
-    .small-box.custom-bg {
-        background-color: transparent !important; /* Fondo transparente */
-        border: 2px solid white !important; /* Borde blanco */
-        color: white !important; /* Texto blanco */
-    }
-    .small-box.text-bg-danger {
-    background-color: #002F6C !important;
-    color: white;
-    }
-    .small-box.text-bg-secondary .inner h3,
-    .small-box.text-bg-secondary .inner p {
-        color: #002d69 !important;
-    }
-
-    .small-box.text-bg-secondary {
-        background-color: transparent !important;
-        border: 2px solid white !important;
-        color: white !important;
-    }
-    .small-box .custom-bg {
-        background-color: transparent !important;
-        border: 1px solid white !important;
-        color: white !important;
-        margin-bottom: 0px !important;
-    }
-
-    .small-box path {
-        color: white !important;
-    }
-
-    .small-box:hover path {
-        color: #00A9E0 !important;
-    }
-
-    .small-box-footer:hover{
-        background-color: #00A9E0 !important;
-        border-bottom-right-radius:  0.375rem;
-        border-bottom-left-radius:  0.375rem;
-    }
-
-    .last-box{
-        padding-top: 3px !important;
-        padding-bottom: 3px !important;
+    .req:after{
+        content: '*';
+        color: red;
     }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
@@ -255,6 +183,7 @@
 
 
     <!-- Content Wrapper -->
+    <main class="app-main">
     <div class="">
         <section>
             <div class="title-table-pc container-fluid text-center">
@@ -265,72 +194,80 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Formulario de Registro</h3>
+                    <div class="card-header" style="padding-left: 10px !important;">
+                        <h5 style="color: #002F6C; font-weight: bold !important;">Formulario de Registro</h5>
                     </div>
                     <form method="POST" action="formulario_compra.php">
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="no_compra">Número de Compra</label>
+                                <label class="req" for="no_compra">Número de Compra</label>
                                 <input type="text" class="form-control" id="no_compra" name="no_compra" placeholder="Ingrese el número de compra" required>
                             </div>
                             <div class="form-group">
-                                <label for="tipo_procedimiento">Tipo de Procedimiento</label>
+                                <label class="req" for="tipo_procedimiento">Tipo de Procedimiento</label>
                                 <input type="text" class="form-control" id="tipo_procedimiento" name="tipo_procedimiento" placeholder="Ingrese el tipo de procedimiento" value="CONTRATACIÓN QUE SUPERAN LOS DIEZ MIL BALBOAS (B/. 10,000.00) SIN EXCEDER LOS CINCUENTA MIL BALBOAS (B/. 50,000.00)" required>
                             </div>
                             
                             <div class="form-group">
-                                <label for="objeto_contractual">Objeto Contractual</label>
+                                <label class="req" for="objeto_contractual">Objeto Contractual</label>
                                 <input type="text" class="form-control" id="objeto_contractual" name="objeto_contractual" placeholder="Ingrese el objeto contractual" required>
                             </div>
                             <div class="form-group">
-                                <label for="descripcion">Descripción</label>
+                                <label class="req" for="descripcion">Descripción</label>
                                 <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese una descripción" rows="3" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="fecha_publicacion">Fecha de Publicación</label>
+                                <label class="req" for="fecha_publicacion">Fecha de Publicación</label>
                                 <input type="date" class="form-control" id="fecha_publicacion" name="fecha_publicacion" required>
                             </div>
                             <div class="form-group">
-                                <label for="tipo_procedimiento">Fecha de Presentación</label>
+                                <label class="req" for="tipo_procedimiento">Fecha de Presentación</label>
                                 <input type="text" class="form-control" id="fecha_presentacion" name="fecha_presentacion"  required>
                             </div>
                                         <div class="form-group">
-                                <label for="fecha_apertura">Fecha de Apertura</label>
+                                <label class="req" for="fecha_apertura">Fecha de Apertura</label>
                                 <input type="date" class="form-control" id="fecha_apertura" name="fecha_apertura" required>
                             </div>
                             <div class="form-group">
-                                <label for="lugar_presentacion">Lugar de Presentación</label>
+                                <label class="req" for="lugar_presentacion">Lugar de Presentación</label>
                                 <input type="text" class="form-control" id="lugar_presentacion" name="lugar_presentacion" placeholder="Ingrese el lugar de presentación" value="DEPARTAMENTO DE COMPRAS, MUNICIPIO DE SAN MIGUELITO, CALLE PRINCIPAL DE FÁTIMA AMELIA DENIS DE ICAZA." required>
                             </div>
                             
                             <div class="form-group">
-                                <label for="termino_subsanacion">Término de Subsanación</label>
-                                <input type="text" class="form-control" id="termino_subsanacion" name="termino_subsanacion" placeholder="Ingrese el término de subsanación" required>
+                                <label class="req" for="termino_subsanacion">Término de Subsanación</label>
+                                <input type="text" class="form-control" id="termino_subsanacion" name="termino_subsanacion" placeholder="Ingrese el término de subsanación" value="0.00" required>
                             </div>
                             <div class="form-group">
-                                <label for="precio_referencia">Precio de Referencia</label>
-                                <input type="number" step="0.01" class="form-control" id="precio_referencia" name="precio_referencia" placeholder="Ingrese el precio de referencia" required>
+                                <label class="req" for="precio_referencia">Precio de Referencia</label>
+                                <input type="number" step="0.01" min="10000" max="50000" class="form-control" oninput="limitDecimals(this)" id="precio_referencia" name="precio_referencia" placeholder="Ingrese el precio de referencia" required>
+                                <script>
+                                    function limitDecimals(input) {
+                                        var value = parseFloat(input.value);
+                                        if (!isNaN(value)) {
+                                            input.value = value.toFixed(2);
+                                        }
+                                    }
+                                </script>
                             </div>
                             <div class="form-group">
-                                <label for="partida_presupuestaria">Partida Presupuestaria</label>
+                                <label class="req" for="partida_presupuestaria">Partida Presupuestaria</label>
                                 <input type="text" class="form-control" id="partida_presupuestaria" name="partida_presupuestaria" placeholder="Ingrese la partida presupuestaria" required>
                             </div>
                             
                             <div class="form-group">
-                                <label for="modalidad_adjudicacion">Modalidad de Adjudicación</label>
+                                <label class="req" for="modalidad_adjudicacion">Modalidad de Adjudicación</label>
                                 <input type="text" class="form-control" id="modalidad_adjudicacion" name="modalidad_adjudicacion" placeholder="Ingrese la modalidad de adjudicación" required>
                             </div>
                             
                             <div class="form-group">
-                                <label for="provincia_entrega">Provincia de Entrega</label>
+                                <label class="req" for="provincia_entrega">Provincia de Entrega</label>
                                 <input type="text" class="form-control" id="provincia_entrega" name="provincia_entrega" placeholder="Ingrese la provincia de entrega" value="Panamá, Distrito San Miguelito" required>
                             </div>
                             
                             
                             
                             <div class="form-group">
-                                <label for="estado">Estado</label>
+                                <label class="req" for="estado">Estado</label>
                                 <select class="form-control" id="estado" name="estado" required>
                                     <option value="Activo">Vigente</option>                                    
                                 </select>

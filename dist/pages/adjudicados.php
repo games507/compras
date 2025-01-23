@@ -72,7 +72,7 @@ if ($result === false) {
 </head>
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
     <?php include 'menu.php';?>
-
+    <main class="app-main">
         <div class="">
             <section>
                 <div class="title-table-pc container-fluid text-center">
@@ -158,7 +158,7 @@ if ($result === false) {
 
     <footer style="padding: 16px; color: #002F6C;">
         <div class="float-right">
-            <b>Version</b> 3.0
+            <b>Version</b> 1.0
         </div>
         <strong>© 2024 Portal de Compras.</strong> Todos los derechos reservados.
     </footer>
