@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="mb-3">
                         <label for="oferta" class="form-label">Oferta</label>
-                        <input type="text" class="form-control" id="oferta" name="oferta" required>
+                        <input type="number" min="10000" max="50000" step="0.01" class="form-control" id="oferta" name="oferta" required>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label for="aprobado" class="form-label">Aprobado</label>
                         <select style="padding-top: 5px; padding-bottom: 5px;" class="form-control" id="aprobado" name="aprobado">
                             <option value="No">No</option>    
-                            <option value="Sí">Sí</option>
+                            <option value="Si">Si</option>
                         </select>
                     </div>
                 </div>

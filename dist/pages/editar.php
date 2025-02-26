@@ -118,8 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
-        background-color: #002d69
-        ;
+        background-color: #009639;
         color: white;
         padding: 15px 30px;
         border-radius: 4px;
@@ -207,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 setTimeout(() => {
                     popup.classList.remove('show');
                     history.go(-2);
-                }, 3000); // Ocultar después de 30 segundos
+                }, 2000); // Ocultar después de 30 segundos
             }
         });
     </script>

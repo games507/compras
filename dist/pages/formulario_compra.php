@@ -8,6 +8,7 @@
 
 // Iniciar sesión para acceder al usuario logueado
 session_start();
+header('Content-Type: text/html; charset=utf-8');
 
 // Verificar si el usuario está logueado
 if (!isset($_SESSION['usuario'])) {
@@ -21,15 +22,17 @@ $usuario_registrado = $_SESSION['usuario'];
 // Conexión a la base de datos
 include 'conexion.php';
 
+
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo = new PDO("mysql:host=localhost;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
+  	$pdo->exec("SET NAMES utf8mb4"); // Forzamos la codificación UTF-8 auct. 20_2_25
+}catch (PDOException $e) {
+    die("(catch)Error de conexión: " . $e->getMessage());
 }
 
 // Captura los datos enviados por el formulario
-$id = $_POST['id'] ?? null;
+//$id = $_POST['id'] ?? null;
 $no_compra = $_POST['no_compra'] ?? null;
 $tipo_procedimiento = $_POST['tipo_procedimiento'] ?? null;
 $objeto_contractual = $_POST['objeto_contractual'] ?? null;
@@ -49,12 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         // Consulta SQL para insertar los datos en wp_portalcompra
         $sql = "INSERT INTO wp_portalcompra (
-                    id, no_compra, tipo_procedimiento, objeto_contractual, descripcion, 
+                    no_compra, tipo_procedimiento, objeto_contractual, descripcion, 
                     fecha_publicacion, fecha_presentacion, fecha_apertura, lugar_presentacion, 
                     termino_subsanacion, precio_referencia, estado, partida_presupuestaria, 
                     modalidad_adjudicacion, provincia_entrega, usuario_registrado
                 ) VALUES (
-                    :id, :no_compra, :tipo_procedimiento, :objeto_contractual, :descripcion, 
+                    :no_compra, :tipo_procedimiento, :objeto_contractual, :descripcion, 
                     :fecha_publicacion, :fecha_presentacion, :fecha_apertura, :lugar_presentacion, 
                     :termino_subsanacion, :precio_referencia, :estado, :partida_presupuestaria, 
                     :modalidad_adjudicacion, :provincia_entrega, :usuario_registrado
@@ -63,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Ejecutar la consulta con los parámetros
         $stmt->execute([
-            ':id' => $id,
             ':no_compra' => $no_compra,
             ':tipo_procedimiento' => $tipo_procedimiento,
             ':objeto_contractual' => $objeto_contractual,

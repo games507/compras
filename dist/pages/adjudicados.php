@@ -29,7 +29,7 @@ $offset = ($pagina_actual - 1) * $registros_por_pagina;
 
 // Condición para la búsqueda
 // Ajuste aquí para que filtre solo los registros donde el estado sea 'adjudicado'
-$where = !empty($busqueda) ? "WHERE (descripcion LIKE '%$busqueda%' OR estado LIKE '%$busqueda%') AND estado = 'adjudicados'" : "WHERE estado = 'adjudicados'";
+$where = !empty($busqueda) ? "WHERE (descripcion LIKE '%$busqueda%' OR estado LIKE '%$busqueda%') AND estado = 'Adjudicado'" : "WHERE estado = 'Adjudicado'";
 
 // Contar el número total de registros
 $sql_total = "SELECT COUNT(*) as total FROM wp_portalcompra $where";

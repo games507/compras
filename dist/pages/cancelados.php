@@ -115,9 +115,10 @@ if ($result === false) {
                                             <?php
                                             $descripcion_corta = mb_substr($row['descripcion'], 0, 50);
                                             echo htmlspecialchars($descripcion_corta) . (strlen($row['descripcion']) > 50 ? '...' : '');
+											$fecha_pub = date("d-m-Y", strtotime($row['fecha_publicacion']));
                                             ?>
                                         </td>
-                                        <td><?php echo htmlspecialchars($row['fecha_publicacion']); ?></td>
+                                        <td><?php echo htmlspecialchars($fecha_pub); ?></td>
                                         <td><?php echo htmlspecialchars($row['estado']); ?></td>
                                         <td>
                                             <a class="btn btn-info" href="resultados.php?id=<?php echo urlencode($row['no_compra']); ?>"><i class="fas fa-eye"></i></a>

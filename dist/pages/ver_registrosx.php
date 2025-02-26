@@ -172,15 +172,17 @@ if ($result === false) {
                                             <td>
                                                 <?php
                                                 $descripcion_corta = mb_substr($row['descripcion'], 0, 50);
-                                                echo htmlspecialchars($descripcion_corta) . (strlen($row['descripcion']) > 50 ? '...' : '');
+                                                echo htmlspecialchars($descripcion_corta) . (strlen($row['descripcion']) > 50 ? '...' : ''); 
+                            					$fecha_pub = date("d-m-Y", strtotime($row['fecha_publicacion']));
                                                 ?>
                                             </td>
-                                            <td><?php echo htmlspecialchars($row['fecha_publicacion']); ?></td>
-                                            <td><?php echo htmlspecialchars($row['estado']); ?></td>
+                                            <td><?php echo htmlspecialchars($fecha_pub); ?></td>
+                                            <td><span class="badge-color"><?php echo htmlspecialchars($row['estado']); ?></span></td>
                                             <td>
                                                 <a href="resultados.php?id=<?php echo urlencode($row['no_compra']); ?>"><i class="fas fa-eye"></i></a>
                                             </td>
                                         </tr>
+                                      	
                                         <?php endwhile; ?>
                                     </tbody>
                                 </table>
@@ -225,5 +227,19 @@ if ($result === false) {
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var elementos = document.querySelectorAll('.badge-color');
+      elementos.forEach(function(elemento) {
+        if (elemento.textContent.includes('Adjudicado')) {
+          elemento.classList.add('adjudicado');
+        }else if (elemento.textContent.includes("Vigente")){
+          elemento.classList.add("vigente");
+        }else{
+          elemento.classList.add("cancelado-desierto");
+        }
+      });
+    });
+  </script>
 </body>
 </html>

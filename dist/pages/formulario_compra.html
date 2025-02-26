@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="Portal de Compras | Alcaldía de San Miguelito">
     <meta name="author" content="Alcaldía de San Miguelito">
@@ -222,11 +222,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="req" for="tipo_procedimiento">Fecha de Presentación</label>
-                                <input type="text" class="form-control" id="fecha_presentacion" name="fecha_presentacion"  required>
+                                <input type="datetime-local" class="form-control" id="fecha_presentacion" name="fecha_presentacion"  required>
                             </div>
                                         <div class="form-group">
                                 <label class="req" for="fecha_apertura">Fecha de Apertura</label>
-                                <input type="date" class="form-control" id="fecha_apertura" name="fecha_apertura" required>
+                                <input type="datetime-local" class="form-control" id="fecha_apertura" name="fecha_apertura" required>
                             </div>
                             <div class="form-group">
                                 <label class="req" for="lugar_presentacion">Lugar de Presentación</label>
@@ -235,11 +235,11 @@
                             
                             <div class="form-group">
                                 <label class="req" for="termino_subsanacion">Término de Subsanación</label>
-                                <input type="text" class="form-control" id="termino_subsanacion" name="termino_subsanacion" placeholder="Ingrese el término de subsanación" value="0.00" required>
+                                <input type="text" class="form-control" id="termino_subsanacion" name="termino_subsanacion" placeholder="Ingrese el término de subsanación" required>
                             </div>
                             <div class="form-group">
                                 <label class="req" for="precio_referencia">Precio de Referencia</label>
-                                <input type="number" step="0.01" min="10000" max="50000" class="form-control" oninput="limitDecimals(this)" id="precio_referencia" name="precio_referencia" placeholder="Ingrese el precio de referencia" required>
+                                <input type="number" step="0.01" min="10000" max="50000" class="form-control" oninput="limitDecimals(this)" id="precio_referencia" name="precio_referencia" value="0.00" placeholder="Ingrese el precio de referencia" required>
                                 <script>
                                     function limitDecimals(input) {
                                         var value = parseFloat(input.value);
@@ -269,7 +269,7 @@
                             <div class="form-group">
                                 <label class="req" for="estado">Estado</label>
                                 <select class="form-control" id="estado" name="estado" required>
-                                    <option value="Activo">Vigente</option>                                    
+                                    <option value="Vigente">Vigente</option>                                    
                                 </select>
                             </div>
                         </div>

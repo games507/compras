@@ -101,7 +101,7 @@ $totalPages = max(ceil($totalRecords / $resultsPerPage), 1);
                     <thead class="thead-light">
                         <tr>
                             <th>No Compra Menor</th>
-                            <th>Tipo de Procedimiento</th>
+                            <th>Descripción</th>
                             <th>Objeto Contractual</th>
                             <th>Acciones</th>
                         </tr>
@@ -113,7 +113,7 @@ $totalPages = max(ceil($totalRecords / $resultsPerPage), 1);
         <td>
             <?php 
                 // Limitar a 50 caracteres y añadir "..." si es necesario
-                echo htmlspecialchars(mb_strimwidth($record['tipo_procedimiento'], 0, 50, '...')); 
+                echo htmlspecialchars(mb_strimwidth($record['descripcion'], 0, 50, '...')); 
             ?>
         </td>
         <td><?php echo htmlspecialchars($record['objeto_contractual']); ?></td>

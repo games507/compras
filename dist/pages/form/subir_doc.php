@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdf'])) {
 
     // Verificar si el archivo se movió correctamente
     if (move_uploaded_file($_FILES['pdf']['tmp_name'], $targetFilePath)) {
-        echo "Archivo subido con éxito: " . $pdfName . "<br>";
+        //echo "Archivo subido con éxito: " . $pdfName . "<br>";
 
         // Insertar el registro en la base de datos con la ruta del archivo
         $stmt = $conn->prepare("INSERT INTO wp_docompra (id_pcompra, nombre, date, pdf) VALUES (?, ?, ?, ?)");
@@ -32,12 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdf'])) {
         $stmt->bind_param("ssss", $id_pcompra, $nombreDocumento, $fechaDocumento, $pdfName);
 
         if ($stmt->execute()) {
-            echo "Documento subido y guardado correctamente.<br>";
+            $successMessage = "Documento subido y guardado correctamente.";
         } else {
-            echo "Error al guardar el documento en la base de datos.<br>";
+            echo 'alert("Error al guardar el documento en la base de datos")';
         }
     } else {
-        echo "Error al mover el archivo: " . $pdfName . "<br>";
+        echo 'alert("Error al mover el archivo: " . $pdfName .)';
     }
 }
 ?>
@@ -89,8 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdf'])) {
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
-        background-color: #002d69
-        ;
+        background-color: #009639;
         color: white;
         padding: 15px 30px;
         border-radius: 4px;
@@ -126,14 +125,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdf'])) {
         </form>
 
         <!-- Volver a la lista de compras -->
-        <a onClick="javascript:history.go(-1)" style="background-color: #D50032; color: white;" class="btn">
+        <a href="https://compras.alcaldiasanmiguelito.gob.pa/dist/pages/buscar.php" style="background-color: #D50032; color: white;" class="btn">
         <i class="bi bi-arrow-left-circle-fill"></i>
             Volver a Lista de Compras
         </a>
+      	<div id="popupMessage" class="popup-message">
+            <?php echo $successMessage; ?>
+        </div>
     </div>
 
     <!-- Scripts necesarios para Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  	<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const popup = document.getElementById('popupMessage');
+            if (popup.textContent.trim() !== "") {
+                popup.classList.add('show');
+                setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 1000); // Ocultar después de 10 segundos
+            }
+        });
+    </script>
 </body>
 </html>

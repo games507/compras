@@ -57,14 +57,70 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['items'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Agregar Documentos a la Compra</title>
+    <link rel="shortcut icon" href="https://alcaldiasanmiguelito.gob.pa/wp-content/uploads/2024/10/cropped-Escudo-AlcaldiaSanMiguelito-RGB_Vertical-Blanco.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="..\..\css\estilos-pc-asm.scss">
+    <title>Agregar documentos a la Compra</title>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        background-color: #002d69;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px; /* Espaciado para pantallas pequeñas */
+    }
+    form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: black;
+        text-align: left;
+    }
+
+    .button {
+        background-color: #002d69;
+        color: white;
+        text-decoration: none;
+    }
+    .button:hover {
+        background-color: #d32f2f;
+        transform: scale(1.05);
+    }
+    .popup-message {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #002d69
+        ;
+        color: white;
+        padding: 15px 30px;
+        border-radius: 4px;
+        font-size: 16px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: opacity 0.5s ease;
+        z-index: 1000;
+    }
+    .popup-message.show {
+        display: block;
+        opacity: 1;
+    }
+</style>
+
 <body>
 
 <div class="container">
-    <h1>Agregar Documentos a la Compra</h1>
-    <form method="POST" action="" enctype="multipart/form-data">
+    <h2 style="margin-bottom: 40px;">Subir documento a la compra</h2>
+    <form method="POST" class="frm-edit-pc" action="" enctype="multipart/form-data">
         <div id="itemContainer">
             <!-- Fila de entrada dinámica -->
             <div class="row mb-3" id="item0">
@@ -78,12 +134,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['items'])) {
                     <input type="file" name="pdf[]" class="form-control" required>
                 </div>
                 <div class="col-auto">
-                    <button type="button" class="btn btn-danger" onclick="removeRow(0)">Eliminar</button>
+                    <button type="button" style="background-color: #D50032; color: white;" class="btn" onclick="removeRow(0)">Eliminar</button>
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-primary mb-3" id="addRowBtn">Agregar Otro Documento</button>
-        <button type="submit" class="btn btn-success mb-3">Guardar Documentos</button>
+        <button type="button" class="btn" style="background-color: #00A9E0; color: white; margin-bottom: 20px;" id="addRowBtn">Agregar Otro Documento</button>
+        <button type="submit" style="background-color: #009639; color: white; margin-bottom: 20px;" class="btn">Guardar Documentos</button>
     </form>
     
     <!-- Botón Regresar -->
@@ -102,13 +158,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['items'])) {
                     <input type="text" name="items[${rowCount}][nombre]" class="form-control" placeholder="Nombre del Documento" required>
                 </div>
                 <div class="col">
-                    <input type="date" name="items[${rowCount}][date]" class="form-control" required>
+                    <input type="date" name="items[${rowCount}][date]" class="form-control" value="<?php echo date('Y-m-d'); ?>" required>
                 </div>
                 <div class="col">
                     <input type="file" name="pdf[]" class="form-control" required>
                 </div>
                 <div class="col-auto">
-                    <button type="button" class="btn btn-danger" onclick="removeRow(${rowCount})">Eliminar</button>
+                    <button type="button" class="btn" style="background-color: #D50032; color: white;" onclick="removeRow(${rowCount})">Eliminar</button>
                 </div>
             </div>
         `;

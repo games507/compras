@@ -25,7 +25,7 @@ if ($no_compra) {
         $row = $result->fetch_assoc();
         
         // Obtener documentos relacionados solo si la compra fue encontrada
-        $sql_docs = "SELECT * FROM wp_docompra WHERE id_pcompra = ?";
+        $sql_docs = "SELECT * FROM wp_docompra WHERE id_pcompra = ? ORDER BY date";
         $stmt_docs = $conn->prepare($sql_docs);
         $stmt_docs->bind_param("i", $row['id']); // Suponiendo que 'id' es el campo clave primaria de wp_portalcompra
         $stmt_docs->execute();
@@ -75,7 +75,7 @@ if ($no_compra) {
                 </a>
                 <?php echo htmlspecialchars($row['no_compra'] ?? 'Compra no encontrada'); ?>
                 <?php if ($row): ?>
-                    <span style="margin-left: 25px; vertical-align: top;" class="badge badge-estado">
+                    <span style="margin-left: 25px; vertical-align: top;" class="badge badge-color">
                         <?php echo htmlspecialchars($row['estado']); ?>
                     </span>
                 <?php endif; ?>
@@ -120,11 +120,14 @@ if ($no_compra) {
                     </div>
                 </div>
             </div>
+          	<?php
+                $f_publicacion = date("d-m-Y", strtotime($row['fecha_publicacion']));
+            ?>
             <div class="col-6 col-sm-6 col-lg-3 text-center cont-portal">
                 <div class="card">
                     <div class="card-header"><h5>Fecha de publicación</h5></div>
                     <div class="cont-text-cp">
-                        <h4 class="font-weight-bold"><?php echo htmlspecialchars($row['fecha_publicacion']); ?></h4>
+                        <h4 class="font-weight-bold"><?php echo htmlspecialchars($f_publicacion); ?></h4>
                         <p>Publicado</p>
                     </div>
                 </div>
@@ -172,27 +175,33 @@ $proponente_result = $stmt_proponente->get_result();
 
 <?php if ($proponente_result && $proponente_result->num_rows > 0): ?>
     <div class="cont-portal">
-        <h3>Proponentes</h3>
+        <h3 style="text-align: left;">Proponentes</h3>
+      	<div class="table-box-pc tb-pc-1">
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Oferta</th>
-                    <th>Estado</th>
+                    <th>Adjudicado</th>
                     <th>Hora</th>
                 </tr>
             </thead>
             <tbody>
                 <?php while ($proponente = $proponente_result->fetch_assoc()): ?>
-                    <tr>
+                    <tr class="row-color">
+                      	<?php
+                        	$p_oferta = number_format($proponente['oferta'], 2, '.', ',');
+                            $h_prop = date("h:i A", strtotime($proponente['hora']));
+                    	?>
                         <td><?php echo htmlspecialchars($proponente['proponente']); ?></td>
-                        <td><?php echo htmlspecialchars($proponente['oferta']); ?></td>
-                        <td><?php echo htmlspecialchars($proponente['aprobado']); ?></td>
-                        <td><?php echo htmlspecialchars($proponente['hora']); ?></td>
+                        <td>B/. <?php echo htmlspecialchars($p_oferta); ?></td>
+                      <td><span class="badge-color"><?php echo htmlspecialchars($proponente['aprobado']); ?></span></td>
+                        <td><?php echo htmlspecialchars($h_prop); ?></td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
+       </div>
     </div>
 <?php else: ?>
     <p class="cont-portal">No se encontraron proponentes para esta compra.</p>
@@ -215,7 +224,7 @@ $proponente_result = $stmt_proponente->get_result();
                     </thead>
                     <tbody>
                         <?php while ($doc = $docs_result->fetch_assoc()): 
-                            $fecha_mod = date("d-m-Y h:i:s A", strtotime($doc['date']));?>
+                            $fecha_mod = date("d-m-Y", strtotime($doc['date']));?>
                             <tr>
                                 <td><i style="color: #00A9E0" class="fa fa-file-pdf-o" aria-hidden="true"></i></td>
                                 <td><?php echo htmlspecialchars($doc['nombre']); ?></td>
@@ -234,5 +243,25 @@ $proponente_result = $stmt_proponente->get_result();
             <?php endif; ?>
         </div>
     </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var elementos = document.querySelectorAll('.badge-color');
+      var filas = document.querySelectorAll('.row-color');
+      elementos.forEach(function(elemento) {
+        if (elemento.textContent.includes('Adjudicado')||elemento.textContent.includes('Si')){
+          elemento.classList.add('adjudicado');
+        }else if (elemento.textContent.includes("Vigente")){
+          elemento.classList.add("vigente");
+        }else{
+          elemento.classList.add("cancelado-desierto");
+        }
+      });
+      filas.forEach(function(fila) {
+        if (fila.textContent.includes('Si')){
+          fila.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

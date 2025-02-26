@@ -357,7 +357,7 @@ WHERE estado = 'vigente'";
                 // Consulta para contar los registros de la columna 'estado'
                 $query = "SELECT COUNT(*) AS total_adjudicados
 FROM wp_portalcompra
-WHERE estado = 'adjudicados'";
+WHERE estado = 'adjudicado'";
                 $stmt = $pdo->query($query);
             
                 // Obtener el resultado
